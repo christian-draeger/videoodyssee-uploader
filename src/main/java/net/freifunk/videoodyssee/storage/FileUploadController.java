@@ -19,10 +19,15 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import net.freifunk.videoodyssee.upload.FileMover;
+
 @Controller
 public class FileUploadController {
 
     private final StorageService storageService;
+
+    @Autowired
+    private FileMover fileMover;
 
     @Autowired
     public FileUploadController(StorageService storageService) {
@@ -56,7 +61,7 @@ public class FileUploadController {
         storageService.store(file);
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
-
+        fileMover.copyTo("~/uploads/", file);
         return "redirect:/";
     }
 

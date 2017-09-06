@@ -1,0 +1,6 @@
+---
+- name: "install videoodyssee frontend"
+  hosts: all
+
+  roles:
+    - install

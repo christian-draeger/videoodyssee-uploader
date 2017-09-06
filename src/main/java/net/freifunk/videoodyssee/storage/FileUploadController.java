@@ -61,7 +61,7 @@ public class FileUploadController {
         storageService.store(file);
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
-        fileMover.copyTo("~/uploads/", file);
+        fileMover.copyTo("/Users/christian.draeger/uploads/", file);
         return "redirect:/";
     }
 

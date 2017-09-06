@@ -11,9 +11,7 @@ public class FileMover {
     public void copyTo(String path, MultipartFile multipartFile) {
         String fileName = multipartFile.getOriginalFilename();
         final File file = new File("upload-dir/" + fileName);
-        System.out.println(file.getAbsoluteFile());
-
-        // FIXME: move file to some directory outside of the project
         file.renameTo(new File(path + fileName));
+        file.delete();
     }
 }

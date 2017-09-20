@@ -1,0 +1,9 @@
+---
+- name: "ensure packages directory"
+  file: path=/data/packages state=directory mode=0700
+- name: "place configuration file"
+  copy: src=app-config/application-{{ spring_active_profile }}.properties dest=/data/{{ application_name }}/application.properties
+- name: "copy application to host"
+  copy: src={{ application_src }} dest={{ application_dest }}
+- name: "install application"
+  command: "sudo /usr/bin/dpkg -i {{ application_dest }}"

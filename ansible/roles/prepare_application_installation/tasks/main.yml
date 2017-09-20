@@ -1,0 +1,5 @@
+---
+- name: "ensure packages directory"
+  file: path=/data/packages state=directory mode=0700
+- name: "ensure configuration directory"
+  file: path=/data/{{ application_name }} state=directory mode=0755

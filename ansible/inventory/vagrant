@@ -1,0 +1,1 @@
+127.0.0.1:2210 deploy_from_local_filesystem=ja-bitte ansible_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/vm1/virtualbox/private_key spring_active_profile=development

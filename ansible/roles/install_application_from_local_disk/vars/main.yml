@@ -1,2 +1,0 @@
----
-application_src: ../target/{{ application_name }}.deb

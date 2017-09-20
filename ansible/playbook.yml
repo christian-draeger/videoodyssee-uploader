@@ -1,14 +1,6 @@
 ---
-- name: "install widgets-frontend and all dependencies"
+- name: "install videoodyssee frontend"
   hosts: all
-  serial: "{{parallel_deployed_hosts | default(1)}} "
-  vars:
-    application_name: videoodyssee-oploader
-    application_dest: /data/packages/consumer-{{ application_name }}.deb
 
   roles:
-    - install_java
-    - prepare_application_installation
-    - provision_configuration
-    - install_application_from_local_disk
-#    - verify_deployment
+    - install

@@ -1,9 +1,0 @@
----
-- name: "apt-get update"
-  command: "sudo apt-get update"
-- name: "accept orcale EULA for oracle-java8-jre"
-  command: "echo 'oracle-java8-installer shared/accepted-oracle-license-v1-1 select true' | sudo debconf-set-selections"
-- name: "install oracle-java8-jdk"
-  command: "sudo apt-get install --yes --allow-unauthenticated oracle-java8-jdk=8u92"
-- name: "install JCE"
-  command: "sudo apt-get install --yes --allow-unauthenticated idealo-oracle-jdk8-jcepolicy-unlimited=8-1"

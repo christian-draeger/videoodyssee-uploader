@@ -1,6 +1,5 @@
 package net.freifunk.videoodyssee.storage;
 
-import java.io.IOException;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +19,8 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import net.freifunk.videoodyssee.upload.FileMover;
+import net.freifunk.videoodyssee.voctoweb.client.Conferences;
+import net.freifunk.videoodyssee.voctoweb.client.PublicApiClient;
 
 @Controller
 public class FileUploadController {
@@ -34,13 +35,19 @@ public class FileUploadController {
         this.storageService = storageService;
     }
 
+    @Autowired
+    private PublicApiClient publicApiClient;
+
     @GetMapping("/")
-    public String listUploadedFiles(Model model) throws IOException {
+    public String listUploadedFiles(Model model) {
+
+        Conferences listOfAllConferences = publicApiClient.getListOfAllConferences();
 
         model.addAttribute("files", storageService.loadAll().map(
                 path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class,
                         "serveFile", path.getFileName().toString()).build().toString())
                 .collect(Collectors.toList()));
+        model.addAttribute("conferences", listOfAllConferences.getConferencesList().stream().map(conferences -> conferences.getAcronym()).collect(Collectors.toList()));
 
         return "uploadForm";
     }

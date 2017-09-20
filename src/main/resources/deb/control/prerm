@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# make sure it's dead
+service @artifact-name@ stop
+killall -9 -u @artifact-name@ &> /dev/null || /bin/true
+
+# make executable mutable again if it exists. postinst makes the executable immutable to meet spring boot's security advices
+chattr -f -i /usr/share/@artifact-name@/*.@project.packaging@ || /bin/true
+
+# rm init script
+update-rc.d @artifact-name@ remove
+rm -f /etc/init.d/@artifact-name@
+
+# rm system user and group
+deluser --force @artifact-name@

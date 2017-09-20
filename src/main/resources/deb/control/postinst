@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# create logging dir and link it to /var/log/application/
+mkdir -p -m 755 /data/@artifact-name@/logs
+chown -R @artifact-name@:@artifact-name@ /data/@artifact-name@/logs
+rm -rf /var/log/@artifact-name@
+ln -fs /data/@artifact-name@/logs/ /var/log/@artifact-name@
+chown -R @artifact-name@:@artifact-name@ /var/log/@artifact-name@
+
+# link the spring boot init script logging file to /data as well
+rm -rf /var/log/@artifact-name@.log
+ln -s /data/@artifact-name@/logs/@artifact-name@.log /var/log/@artifact-name@.log
+
+# apply security advices found at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/deployment-install.html#deployment-initd-service-securing
+chmod 500 /usr/share/@artifact-name@/*.@project.packaging@
+chattr +i /usr/share/@artifact-name@/*.@project.packaging@
+
+# cleanup old tomcat temp files
+rm -rf /tmp/tomcat.*.8080
+
+# make init script known and start the service
+ln -fs /usr/share/@artifact-name@/@artifact-name@.@project.packaging@ /etc/init.d/@artifact-name@
+update-rc.d @artifact-name@ defaults
+service @artifact-name@ start

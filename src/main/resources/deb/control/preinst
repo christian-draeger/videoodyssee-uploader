@@ -1,6 +1,0 @@
-#!/bin/sh
-
-adduser --system --no-create-home --disabled-password --disabled-login --group --uid=3000 @artifact-name@ || /bin/true
-
-# make executable mutable again if it exists. postinst make the executable immutable to meet spring boot's security advices
-chattr -f -i /usr/share/@artifact-name@/*.@project.packaging@ || /bin/true

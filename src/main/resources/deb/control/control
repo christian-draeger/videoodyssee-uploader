@@ -1,9 +1,0 @@
-Package: @artifact-name@
-Version: [[version]]
-Section: consumer
-Priority: low
-Architecture: all
-Description: @artifact-name@ is here
-Maintainer:
-Depends:
-Recommends:

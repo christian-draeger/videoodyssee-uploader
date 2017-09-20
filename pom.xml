@@ -5,7 +5,7 @@
 
     <groupId>net.freifunk</groupId>
     <artifactId>videoodyssee-uploader</artifactId>
-    <version>0.0.1</version>
+    <version>0.1.0</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -15,7 +15,6 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <artifact-name>videoodyssee-uploader</artifact-name>
     </properties>
 
     <dependencies>
@@ -40,65 +39,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.0</version>
-                <configuration>
-                    <forceJavacCompilerUse>true</forceJavacCompilerUse>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <fork>true</fork>
-                    <finalName>${artifact-name}</finalName>
-                    <executable>true</executable>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.vafer</groupId>
-                <artifactId>jdeb</artifactId>
-                <version>1.5</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jdeb</goal>
-                        </goals>
-                        <configuration>
-                            <deb>${project.build.directory}/${artifact-name}.deb</deb>
-                            <verbose>true</verbose>
-                            <controlDir>${project.build.directory}/classes/deb/control</controlDir>
-                            <dataSet>
-                                <data>
-                                    <src>${project.build.directory}/${artifact-name}.${project.packaging}</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <prefix>/usr/share/${artifact-name}</prefix>
-                                        <user>${artifact-name}</user>
-                                        <group>${artifact-name}</group>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>${project.build.directory}/classes/deb/${artifact-name}.conf</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <prefix>/usr/share/${artifact-name}</prefix>
-                                        <user>${artifact-name}</user>
-                                        <group>${artifact-name}</group>
-                                    </mapper>
-                                </data>
-                            </dataSet>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

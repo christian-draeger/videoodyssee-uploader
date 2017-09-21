@@ -9,7 +9,11 @@
 		<h2 th:text="${message}"/>
 	</div>
 
-	<div th:text="${conferences}"></div>
+    <select>
+        <option th:each="conference : ${conferences}" th:value="${conference}" th:text="${conference.title}">
+            Conference
+        </option>
+    </select>
 
 	<div>
 		<form method="POST" enctype="multipart/form-data" action="/">

@@ -58,7 +58,7 @@ public class PublicApiClient {
         } catch (UnirestException e) {
             log.warn("Could not get Conferences from voctoweb!", e);
         }
-        return null;
+        return new Conferences();
     }
 
 }

@@ -47,7 +47,7 @@ public class FileUploadController {
                 path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class,
                         "serveFile", path.getFileName().toString()).build().toString())
                 .collect(Collectors.toList()));
-        model.addAttribute("conferences", listOfAllConferences.getConferencesList().stream().map(conferences -> conferences.getAcronym()).collect(Collectors.toList()));
+        model.addAttribute("conferences", listOfAllConferences.getConferencesList());
 
         return "uploadForm";
     }
@@ -73,7 +73,7 @@ public class FileUploadController {
     }
 
     @ExceptionHandler(StorageFileNotFoundException.class)
-    public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
+    public ResponseEntity<String> handleStorageFileNotFound(StorageFileNotFoundException exc) {
         return ResponseEntity.notFound().build();
     }
 

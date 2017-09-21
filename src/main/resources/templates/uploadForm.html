@@ -9,14 +9,14 @@
 		<h2 th:text="${message}"/>
 	</div>
 
-    <select>
-        <option th:each="conference : ${conferences}" th:value="${conference}" th:text="${conference.title}">
-            Conference
-        </option>
-    </select>
 
 	<div>
 		<form method="POST" enctype="multipart/form-data" action="/">
+            <select name="conference">
+                <option th:each="conference : ${conferences}" th:value="${conference}" th:text="${conference.title}">
+                    Conference
+                </option>
+            </select>
 			<table>
 				<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
 				<tr><td></td><td><input type="submit" value="Upload" /></td></tr>

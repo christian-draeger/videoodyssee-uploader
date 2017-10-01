@@ -9,18 +9,57 @@
 		<h2 th:text="${message}"/>
 	</div>
 
-    <select>
-        <option th:each="conference : ${conferences}" th:value="${conference}" th:text="${conference.title}">
-            Conference
-        </option>
-    </select>
-
 	<div>
 		<form method="POST" enctype="multipart/form-data" action="/">
-			<table>
-				<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-				<tr><td></td><td><input type="submit" value="Upload" /></td></tr>
-			</table>
+			<fieldset>
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="nameinput">Your name</label>
+					<div class="col-md-4">
+						<input id="nameinput" name="name" type="text" placeholder="Name/Nickname" class="form-control input-md" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="emailinput">Your mail address</label>
+					<div class="col-md-4">
+						<input id="emailinput" name="email" type="email" placeholder="Email" class="form-control input-md" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="titleinput">Talk title</label>
+					<div class="col-md-4">
+						<input id="titleinput" name="title" type="email" placeholder="Talk title" class="form-control input-md" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="nameinput">Release date</label>
+					<div class="col-md-4">
+						<input id="releasedateinput" name="releasedate" type="date" class="form-control input-md" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="conferenceselect">Conference</label>
+					<div class="col-md-4">
+						<select id="conferenceselect" name="conferenceselect" class="form-control">
+							<option th:each="conference : ${conferences}" th:value="${conference}" th:text="${conference.title}">
+								Conference
+							</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="fileinput">File to upload</label>
+					<div class="col-md-4">
+						<input id="fileinput" name="file" class="input-file" type="file">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="submitbutton"></label>
+					<div class="col-md-4">
+						<button id="submitbutton" name="submitbutton" class="btn btn-default" type="submit">Upload</button>
+					</div>
+				</div>
+			</fieldset>
 		</form>
 	</div>
 

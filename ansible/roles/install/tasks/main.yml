@@ -1,0 +1,36 @@
+---
+- group:
+    name: "{{ application_name }}"
+    state: present
+
+- user:
+    name: "{{ application_name }}"
+    group: "{{ application_name }}"
+    shell: /usr/sbin/nologin
+
+- name: ensure that there is a upload folder
+  file: path=/tmp/uploads state=directory
+
+- name: ensure that there is a folder to install the application
+  file:
+    path: /opt/{{ application_name }}
+    state: directory
+    owner: "{{ application_name }}"
+
+- name: copy application
+  copy: src={{ application_jar }} dest=/opt/{{ application_name }}/{{ application_name }}.jar
+
+- name: ensure that upstart configuration is present
+  template: src=application.service dest=/lib/systemd/system/{{ application_name }}.service mode=755
+
+- name: "restart {{ application_name }}"
+  systemd: name={{ application_name }} state=restarted enabled=true
+  async: 45
+  poll: 5
+
+- name: "wait for the application to start"
+  action: uri url=http://localhost:8080/
+  register: server_status
+  until: server_status.status | default(0) == 200
+  retries: 20
+  become: no

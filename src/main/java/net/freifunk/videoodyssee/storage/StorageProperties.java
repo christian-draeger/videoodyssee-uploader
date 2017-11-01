@@ -5,10 +5,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("storage")
 public class StorageProperties {
 
-    private String location = "upload-dir";
+    private String location = "java.io.tmpdir";
 
     public String getLocation() {
-        return location;
+        return System.getProperty(location);
     }
 
     public void setLocation(String location) {

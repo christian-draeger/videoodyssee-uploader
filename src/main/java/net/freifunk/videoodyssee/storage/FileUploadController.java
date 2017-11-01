@@ -3,6 +3,7 @@ package net.freifunk.videoodyssee.storage;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,9 @@ import net.freifunk.videoodyssee.voctoweb.client.PublicApiClient;
 public class FileUploadController {
 
     private final StorageService storageService;
+
+    @Value("${upload.path}")
+    private String uploadPath;
 
     @Autowired
     private FileMover fileMover;
@@ -68,7 +72,7 @@ public class FileUploadController {
         storageService.store(file);
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
-        fileMover.copyTo("/Users/christian.draeger/uploads/", file);
+        fileMover.copyTo(uploadPath, file);
         return "redirect:/";
     }
 

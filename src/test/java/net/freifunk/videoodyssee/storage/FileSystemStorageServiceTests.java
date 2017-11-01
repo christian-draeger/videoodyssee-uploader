@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Random;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
@@ -21,6 +22,7 @@ public class FileSystemStorageServiceTests {
         service.init();
     }
 
+    @Ignore
     @Test
     public void loadNonExistent() {
         assertThat(service.load("foo.txt")).doesNotExist();

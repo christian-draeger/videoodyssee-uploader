@@ -1,6 +1,15 @@
 ---
-- name: "install videoodyssee frontend"
+- name: "deploy everything"
   hosts: all
+  become: yes
+  become_method: sudo
+
+  vars:
+    - application_jar: '../target/videoodyssee-uploader-0-SNAPSHOT.jar'
+    - application_name: 'videoodyssee-uploader'
 
   roles:
-    - install
+    - role: geerlingguy.java
+      java_packages:
+        - openjdk-8-jdk
+    - role: install

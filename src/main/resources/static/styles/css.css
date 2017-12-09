@@ -1,0 +1,67 @@
+/* navbar */
+.navbar {
+    background-color: #b71e4c;
+    color: white;
+}
+.navbar img {
+    width: 46px;
+    margin: auto 10px auto 50px;
+}
+.navbar span {
+    color: inherit;
+    font-size: 22px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* formular */
+.form-wrapper {
+    max-width:70%;
+    margin-left: 15%;
+}
+
+/* alerts */
+
+.alert-danger {
+    position: fixed;
+    z-index: 1;
+    left: 15%;
+    width: 70%;
+    top: 15px;
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.fadeInDown {
+    animation-name: fadeInDown;
+}
+
+@keyframes fadeOutUp {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+    }
+}
+
+.fadeOutUp {
+    animation-name: fadeOutUp;
+}

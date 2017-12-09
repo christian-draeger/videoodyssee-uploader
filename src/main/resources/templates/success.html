@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Freifunk - Videoodyssee</title>
+    <link rel="icon" type="image/x-icon" href="../static/favicon.ico" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+            href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{styles/css.css}"
+            href="styles/css.css"/>
+</head>
+<body>
+
+<div class="alert alert-success">
+    <h1>Success</h1>
+    <h2>Your video will be processed now</h2>
+</div>
+
+<div>
+    <p>Name  : <b th:text="${name}"/></p>
+    <p>Title : <b th:text="${title}"/></p>
+    <p>Email : <b th:text="${email}"/></p>
+    <p>Date  : <b th:text="${releaseDate}"/></p>
+    <p>Conference  : <b th:text="${conference}"/></p>
+    <p>Video: <b th:text="${videoName}"/></p>
+</div>
+
+<script type="application/javascript" src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+<script type="application/javascript" src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+</body>
+</html>

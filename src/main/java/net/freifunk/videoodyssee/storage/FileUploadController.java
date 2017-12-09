@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +22,7 @@ import net.freifunk.videoodyssee.upload.FileMover;
 import net.freifunk.videoodyssee.voctoweb.client.Conferences;
 import net.freifunk.videoodyssee.voctoweb.client.PublicApiClient;
 
-@Controller
+
 public class FileUploadController {
 
     private final StorageService storageService;

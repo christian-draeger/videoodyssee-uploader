@@ -1,0 +1,79 @@
+.hidden {
+	position: absolute;
+	overflow: hidden;
+	width: 0;
+	height: 0;
+	pointer-events: none;
+}
+
+.js .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    padding: 0.625rem 1.25rem;
+}
+
+.no-js .inputfile + label {
+    display: none;
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.inputfile + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    /* 4px */
+    margin-right: 0.25em;
+    /* 4px */
+}
+
+.inputfile + label {
+    color: #ffffff;
+}
+
+.inputfile + label {
+    background-color: #626060;
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label,
+.inputfile + label:hover {
+    border-color: #722040;
+}
+
+.inputfile + label span {
+    width: 50%;
+    margin-left: 50%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: -webkit-baseline-middle;
+}
+
+.inputfile:focus + label strong,
+.inputfile.has-focus + label strong,
+.inputfile + label:hover strong {
+    background-color: #722040;
+}
+
+@media screen and (max-width: 50em) {
+	.inputfile-6 + label strong {
+		display: block;
+	}
+}

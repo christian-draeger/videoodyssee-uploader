@@ -59,13 +59,13 @@
     font-family: 'Nunito', sans-serif;
 }
 
-#login-box button.btn-custom:hover {
+#login-box .btn-custom:hover {
     -webkit-transition: all 500ms ease;
     -moz-transition: all 500ms ease;
     -ms-transition: all 500ms ease;
     -o-transition: all 500ms ease;
     transition: all 500ms ease;
-    background: #fab313;
+    background: #722040;
     color: white;
     border-color: #b71e4c;
 }
@@ -86,7 +86,8 @@
     width: 100%;
 }
 
-#uploadForm label span {
+#uploadForm label span.label,
+#uploadForm label strong {
     background-color: #302e2d;
     color: white;
     font-size: 14px;
@@ -106,20 +107,16 @@
     padding-left: 70px;
 }
 
-#uploadForm input:focus + span,
-#uploadForm input:active + span,
-#uploadForm textarea:focus + span,
-#uploadForm textarea:active + span {
+#uploadForm input:focus + span.label,
+#uploadForm input:active + span.label {
     top: -9px;
     color: #b71e4c;
     border: solid 3px;
     font-weight: bold;
 }
 
-#uploadForm input:focus + span,
-#uploadForm input:active + span,
-#uploadForm textarea:focus + span,
-#uploadForm textarea:active + span {
+#uploadForm input:focus + span.label,
+#uploadForm input:active + span.label {
     top: -9px;
     border: solid 3px;
     font-weight: bold;
@@ -134,7 +131,7 @@
 }
 
 /* ANIMATION */
-#uploadForm label span {
+#uploadForm label span.label {
     transition: top 0.3s ease 0s, color 0.3s ease 0s;
 }
 

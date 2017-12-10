@@ -58,8 +58,7 @@
 }
 
 .inputfile + label span {
-    width: 50%;
-    margin-left: 30%;
+    padding-left: 88px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;

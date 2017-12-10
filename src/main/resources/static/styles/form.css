@@ -74,7 +74,7 @@
 #uploadForm textarea {
     height: 45px;
     line-height: 1.4em;
-    text-align: center;
+    padding-left: 100px;
     width: 100%;
 }
 
@@ -84,6 +84,7 @@
     line-height: 1.4em;
     position: relative;
     width: 100%;
+    margin-bottom: 1px;
 }
 
 #uploadForm label span.label,

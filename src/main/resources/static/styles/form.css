@@ -21,10 +21,6 @@
     margin-bottom: 0;
 }
 
-.hover-grayscale:hover {
-    filter: grayscale(100%)
-}
-
 #login-box .logo .tweak {
     color: #b71e4c;
 }
@@ -69,7 +65,8 @@
     -ms-transition: all 500ms ease;
     -o-transition: all 500ms ease;
     transition: all 500ms ease;
-    background: rgba(48, 46, 45, 1);
+    background: #fab313;
+    color: white;
     border-color: #b71e4c;
 }
 
@@ -90,10 +87,11 @@
 }
 
 #uploadForm label span {
-    background-color: #626060;
+    background-color: #302e2d;
+    color: white;
     font-size: 14px;
     font-weight: 200;
-    border: solid 1px;
+    border: 1px solid #b71e4c;
     border-radius: 5px;
     min-width: 75px;
     text-align: center;
@@ -112,7 +110,19 @@
 #uploadForm input:active + span,
 #uploadForm textarea:focus + span,
 #uploadForm textarea:active + span {
-    top: -9px; /* Change this to fit your label text width */
+    top: -9px;
+    color: #b71e4c;
+    border: solid 3px;
+    font-weight: bold;
+}
+
+#uploadForm input:focus + span,
+#uploadForm input:active + span,
+#uploadForm textarea:focus + span,
+#uploadForm textarea:active + span {
+    top: -9px;
+    border: solid 3px;
+    font-weight: bold;
 }
 
 #uploadForm input[type="submit"] {
@@ -135,4 +145,79 @@
 
 input[type="text"]:focus, input[type="email"]:focus, input[type="email"]:focus {
     border: 3px solid #b71e4c !important;
+}
+
+/* pulse animation */
+.pulse:hover {
+    animation-name: pulse_animation;
+    animation-duration: 5000ms;
+    transform-origin:70% 70%;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes pulse_animation {
+    0% { transform: scale(1); }
+    30% { transform: scale(1); }
+    40% { transform: scale(1.08); }
+    50% { transform: scale(1); }
+    60% { transform: scale(1); }
+    70% { transform: scale(1.05); }
+    80% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shake {
+    from, to {
+        transform: translate3d(0, 0, 0);
+    }
+
+    10%, 30%, 50%, 70%, 90% {
+        transform: translate3d(-10px, 0, 0);
+    }
+
+    20%, 40%, 60%, 80% {
+        transform: translate3d(10px, 0, 0);
+    }
+}
+
+.shake {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: shake;
+}
+
+@keyframes bounceInDown {
+    from, 60%, 75%, 90%, to {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transform: translateX(-50%);
+    }
+
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -3000px, 0);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translate3d(0, 25px, 0);
+    }
+
+    75% {
+        transform: translate3d(0, -10px, 0);
+    }
+
+    90% {
+        transform: translate3d(0, 5px, 0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.bounceInDown {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: bounceInDown;
 }

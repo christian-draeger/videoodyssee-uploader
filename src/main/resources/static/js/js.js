@@ -116,9 +116,13 @@ $.getScript("https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles
             }
         }
     );
-
 });
 
+$( document ).ready(function() {
+
+    var inputValue = $('input:focus').val();
+    console.log(inputValue);
+});
 
 
 

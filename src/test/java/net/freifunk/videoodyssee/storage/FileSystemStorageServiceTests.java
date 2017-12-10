@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
 
+@Ignore
 public class FileSystemStorageServiceTests {
 
     private StorageProperties properties = new StorageProperties();

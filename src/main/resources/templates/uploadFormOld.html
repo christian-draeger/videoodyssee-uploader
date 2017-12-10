@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Freifunk - Videoodyssee</title>
+    <link rel="icon" type="image/x-icon" href="../static/favicon.ico"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+            href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{styles/css.css}"
+            href="styles/css.css"/>
+    <script src="js/js.js"></script>
+</head>
+<body>
+<div id="particles-js"></div>
+<div th:if="${errorMessage}">
+    <div class="alert alert-danger alert-dismissable animated fadeInDown">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <span th:text="${errorMessage}">error message</span>
+    </div>
+</div>
+
+<div class="navbar navbar-default">
+    <a href="https://media.freifunk.net">
+        <img alt="media.freifunk.net logo" src="pics/freifunk-logo-small.png"/>
+        <span>media.freifunk.net</span>
+    </a>
+</div>
+<br />
+<br />
+
+<h1 class="text-center">Freifunk - Videoodyssee</h1>
+<h2 class="text-center">Upload videos to <a href="http://media.freifunk.net">media.freifunk.net</a></h2>
+
+<div class="form-wrapper">
+    <form method="POST" action="/add" enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="nameinput">Your name</label>
+            <div class="col-md-4">
+                <input id="nameinput" name="name" type="text" placeholder="Name/Nickname"
+                        class="form-control input-md"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="emailinput">Your mail address</label>
+            <div class="col-md-4">
+                <input id="emailinput" name="email" type="email" placeholder="Email" class="form-control input-md"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="titleinput">Talk title</label>
+            <div class="col-md-4">
+                <input id="titleinput" name="title" type="text" placeholder="Talk title"
+                        class="form-control input-md"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="nameinput">Release date</label>
+            <div class="col-md-4">
+                <input id="releasedateinput" name="releaseDate" type="date" class="form-control input-md"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="conferenceselect">Conference</label>
+            <div class="col-md-4">
+                <select id="conferenceselect" name="conference" class="form-control">
+                    <option th:each="con : ${conferences}" th:value="${con}" th:text="${con.title}">
+                        Conference
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="fileinput">File to upload</label>
+            <div class="col-md-4">
+                <input id="fileinput" name="video" class="btn btn-default" type="file"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="submitbutton"></label>
+            <div class="col-md-4">
+                <button id="submitbutton" name="submitbutton" class="btn btn-default" type="submit">Upload</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="application/javascript" src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+<script type="application/javascript" src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+</body>
+</html>

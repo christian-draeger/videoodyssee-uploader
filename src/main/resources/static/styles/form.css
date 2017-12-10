@@ -71,12 +71,23 @@
     border-color: #b71e4c;
 }
 
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+}
+
 #uploadForm input,
 #uploadForm select {
     height: 45px;
     line-height: 1.4em;
     padding-left: 100px;
     width: 100%;
+}
+
+#uploadForm select {
+    cursor: pointer;
 }
 
 #uploadForm label {
@@ -158,14 +169,14 @@ select:focus {
 /* pulse animation */
 .pulse:hover {
     animation-name: pulse_animation;
-    animation-duration: 5000ms;
+    animation-duration: 2000ms;
     transform-origin:70% 70%;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
 
 @keyframes pulse_animation {
-    0% { transform: scale(1); }
+    0% { transform: scale(1.05); }
     30% { transform: scale(1); }
     40% { transform: scale(1.08); }
     50% { transform: scale(1); }
@@ -220,7 +231,7 @@ select:focus {
     }
 
     to {
-        transform: translateX(-50%);
+        transform: none;
     }
 }
 

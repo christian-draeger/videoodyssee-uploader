@@ -6,6 +6,11 @@
 	pointer-events: none;
 }
 
+/*input#file {
+    width: 1px;
+    height: 1px;
+}*/
+
 .js .inputfile {
     width: 0.1px;
     height: 0.1px;

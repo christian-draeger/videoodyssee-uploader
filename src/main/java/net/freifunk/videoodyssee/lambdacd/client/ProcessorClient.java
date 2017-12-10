@@ -5,10 +5,14 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
 
+import lombok.extern.slf4j.Slf4j;
 import net.freifunk.videoodyssee.model.UploadForm;
 
+@Slf4j
 @Component
 public class ProcessorClient {
 
@@ -23,6 +27,8 @@ public class ProcessorClient {
 
     public void trigger(UploadForm form) {
 
+        log.info("trigger lambdacd method called");
+
         JSONObject payload = new JSONObject();
         try {
             payload.put("name", form.getName());
@@ -35,9 +41,18 @@ public class ProcessorClient {
             e.printStackTrace();
         }
 
-        Unirest
-                .post(endpoint)
-                .basicAuth(user, pass)
-                .body(payload);
+        HttpResponse<String> response = null;
+
+        try {
+            response = Unirest
+                    .post(endpoint)
+                    .basicAuth(user, pass)
+                    .body(payload)
+                    .asString();
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
+
+        log.info("lambdaCD responds with status {}", response.getStatus());
     }
 }

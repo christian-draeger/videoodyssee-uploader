@@ -65,11 +65,6 @@ public class RegistrationController {
         return "uploadForm";
     }
 
-    @GetMapping("/2")
-    public String uploaderForm2() {
-        return "uploadForm2";
-    }
-
     @PostMapping("/add")
     public String addVideo(@ModelAttribute UploadForm form, ModelMap model, RedirectAttributes redirectAttributes) {
 
@@ -86,7 +81,7 @@ public class RegistrationController {
         model.put("title", form.getTitle());
         model.put("releaseDate", form.getReleaseDate());
         model.put("conference", form.getConference());
-        model.put("files", file.getOriginalFilename());
+        model.put("videoName", file.getOriginalFilename());
 
         storageService.store(file);
         fileMover.copyTo(uploadPath, file);

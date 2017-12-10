@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Freifunk - Videoodyssee</title>
+    <link rel="icon" type="image/x-icon" href="../static/favicon.ico"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+            href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{styles/background.css}"
+            href="styles/background.css"/>
+    <link rel="stylesheet" th:href="@{styles/form.css}"
+            href="styles/form.css"/>
+</head>
+<body>
+<div class="container">
+    <div id="login-box">
+        <div class="logo">
+            <a href="http://media.freifunk.net" target="_blank">
+                <img src="pics/logo-small.png" class="img img-responsive center-block hover-grayscale"/>
+            </a>
+            <h1 class="logo-caption">Video <span class="tweak">U</span>pload</h1>
+        </div>
+        <div id="uploadForm">
+            <label>
+                <input type="text" name="name" placeholder="Name or Nickname" class="form-control"/>
+                <span>Name</span>
+            </label>
+            <label>
+                <input type="email" name="email" placeholder="Your E-Mail address" class="form-control"/>
+                <span>E-Mail</span>
+            </label>
+            <label>
+                <input type="text" name="title" placeholder="Title of the video" class="form-control"/>
+                <span>Title</span>
+            </label>
+
+            <label>
+                <input type="text" name="name" placeholder="Event or Conference" class="form-control"/>
+                <span>Event</span>
+            </label>
+            <label>
+                <input type="text" name="subject" placeholder="Release Date" class="form-control"/>
+                <span>Date</span>
+            </label>
+            <label>
+                <input type="text" name="subject" placeholder="Choose a Video" class="form-control"/>
+                <span>File</span>
+            </label>
+
+
+            <button type="button" class="btn btn-default btn-block btn-custom">Upload</button>
+        </div>
+    </div>
+</div>
+<div class="footer"><img src="pics/footer-transparent.png"/></div>
+<div id="particles-js"></div>
+<script type="application/javascript" src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+<script type="application/javascript" src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+<script type="application/javascript" src="js/js.js"></script>
+</body>
+</html>

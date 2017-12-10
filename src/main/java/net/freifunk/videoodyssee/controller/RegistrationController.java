@@ -10,6 +10,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,13 +29,12 @@ import net.freifunk.videoodyssee.storage.StorageFileNotFoundException;
 import net.freifunk.videoodyssee.storage.StorageService;
 import net.freifunk.videoodyssee.upload.FileMover;
 import net.freifunk.videoodyssee.upload.Validator;
+import net.freifunk.videoodyssee.voctoweb.client.Conferences;
 import net.freifunk.videoodyssee.voctoweb.client.PublicApiClient;
 
 @Slf4j
 @Controller
 public class RegistrationController {
-    //store uploaded file to this folder
-    private static String upload_dir = "F:/springfileupload/";
 
     private final StorageService storageService;
 
@@ -59,19 +59,16 @@ public class RegistrationController {
     private ProcessorClient processorClient;
 
     @GetMapping("/")
-    public String uploaderForm() {
+    public String uploaderForm(Model model) {
+        Conferences listOfAllConferences = publicApiClient.getListOfAllConferences();
+        model.addAttribute("conferences", listOfAllConferences.getConferencesList());
         return "uploadForm";
     }
 
-    @GetMapping("/files/{filename:.+}")
-    @ResponseBody
-    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
-
-        Resource file = storageService.loadAsResource(filename);
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+    @GetMapping("/2")
+    public String uploaderForm2() {
+        return "uploadForm2";
     }
-
 
     @PostMapping("/add")
     public String addVideo(@ModelAttribute UploadForm form, ModelMap model, RedirectAttributes redirectAttributes) {
@@ -100,9 +97,18 @@ public class RegistrationController {
         return "success";
     }
 
+    @GetMapping("/files/{filename:.+}")
+    @ResponseBody
+    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
+
+        Resource file = storageService.loadAsResource(filename);
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+    }
+
     @RequestMapping(value = "/video/{videoName}")
     @ResponseBody
-    public byte[] getImage(@PathVariable("videoName") String fileName) throws IOException {
+    public byte[] getVideo(@PathVariable("videoName") String fileName) throws IOException {
         File file = new File(uploadPath + fileName);
         return Files.readAllBytes(file.toPath());
     }

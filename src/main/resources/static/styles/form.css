@@ -95,6 +95,7 @@
     border: 1px solid #b71e4c;
     border-radius: 5px;
     min-width: 75px;
+    line-height: inherit;
     text-align: center;
     position: absolute;
     left: 10px;

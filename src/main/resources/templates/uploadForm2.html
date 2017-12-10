@@ -32,7 +32,11 @@
             </label>
 
             <label>
-                <input type="text" name="name" placeholder="Event or Conference" class="form-control"/>
+                <select name="conference" class="form-control">
+                    <option th:each="con : ${conferences}" th:value="${con}" th:text="${con.title}">
+                        Event or Conference
+                    </option>
+                </select>
                 <span class="label">Event</span>
             </label>
             <label>

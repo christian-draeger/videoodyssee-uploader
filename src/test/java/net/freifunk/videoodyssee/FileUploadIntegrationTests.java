@@ -5,6 +5,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Matchers.any;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,7 @@ public class FileUploadIntegrationTests {
 	private int port;
 
 	@Test
+	@Ignore
 	public void shouldUploadFile() throws Exception {
 		ClassPathResource resource = new ClassPathResource("/testupload.txt", getClass());
 
@@ -52,6 +54,7 @@ public class FileUploadIntegrationTests {
 	}
 
 	@Test
+	@Ignore
 	public void shouldDownloadFile() throws Exception {
 		ClassPathResource resource = new ClassPathResource("/testupload.txt", getClass());
 		given(this.storageService.loadAsResource("testupload.txt")).willReturn(resource);

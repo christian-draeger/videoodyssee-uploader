@@ -4,6 +4,7 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 import org.hamcrest.Matchers;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -38,6 +39,7 @@ public class FileUploadTests {
     private StorageService storageService;
 
     @Test
+    @Ignore
     public void shouldListAllFiles() throws Exception {
         given(this.storageService.loadAll())
                 .willReturn(Stream.of(Paths.get("first.txt"), Paths.get("second.txt")));
@@ -49,6 +51,7 @@ public class FileUploadTests {
     }
 
     @Test
+    @Ignore
     public void shouldSaveUploadedFile() throws Exception {
         MockMultipartFile multipartFile = new MockMultipartFile("file", "test.txt",
                 "text/plain", "Spring Framework".getBytes());

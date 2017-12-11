@@ -156,6 +156,13 @@ select {
 #uploadForm input:focus,
 #uploadForm select:focus {
     transition: all 0.3s ease;
+    outline: none !important;
+}
+
+.form-control:focus {
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 
 input[type="text"]:focus,

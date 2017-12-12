@@ -11,6 +11,7 @@
     background: #302e2d;
     min-height: 250px;
     padding: 20px;
+    margin-bottom: 20px;
     z-index: 9999;
 }
 
@@ -30,7 +31,8 @@
 }
 
 #login-box #uploadForm label input,
-#login-box #uploadForm label select {
+#login-box #uploadForm label select,
+#login-box #uploadForm label textarea {
     border-radius: 0;
     background: #626060;
     border: 0;
@@ -44,7 +46,7 @@
     border-top-right-radius: 10px;
 }
 
-#login-box #uploadForm label:last-of-type input {
+#login-box #uploadForm label:last-of-type textarea {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
@@ -86,6 +88,22 @@ select {
     width: 100%;
 }
 
+#uploadForm textarea {
+    vertical-align: bottom;
+    line-height: 1.4em;
+    padding-top: 13px;
+    padding-left: 100px;
+    min-height: 45px;
+    height: 45px;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+#uploadForm input:required,
+#uploadForm select:required {
+    /*border: 3px dashed red;*/
+}
+
 #uploadForm select {
     cursor: pointer;
 }
@@ -99,7 +117,7 @@ select {
     margin-bottom: 1px;
 }
 
-#uploadForm label span.label,
+#uploadForm label span.input-label,
 #uploadForm label strong {
     background-color: #302e2d;
     color: white;
@@ -117,26 +135,26 @@ select {
     pointer-events: none;
 }
 
-#uploadForm .populated {
-    padding-left: 70px;
-}
-
-#uploadForm input:focus + span.label,
-#uploadForm input:active + span.label,
-#uploadForm select:focus + span.label,
-#uploadForm select:active + span.label {
+#uploadForm input:focus + span.input-label,
+#uploadForm input:active + span.input-label,
+#uploadForm select:focus + span.input-label,
+#uploadForm select:active + span.input-label,
+#uploadForm textarea:focus + span.input-label,
+#uploadForm textarea:active + span.input-label {
     top: -9px;
     color: #b71e4c;
-    border: solid 3px;
+    border: 3px solid #b71e4c;
     font-weight: bold;
 }
 
-#uploadForm input:focus + span.label,
-#uploadForm input:active + span.label,
-#uploadForm select:focus + span.label,
-#uploadForm select:active + span.label {
+#uploadForm input:focus + span.input-label,
+#uploadForm input:active + span.input-label,
+#uploadForm select:focus + span.input-label,
+#uploadForm select:active + span.input-label,
+#uploadForm textarea:focus + span.input-label,
+#uploadForm textarea:active + span.input-label {
     top: -9px;
-    border: solid 3px;
+    border: 3px solid #b71e4c;
     font-weight: bold;
 }
 
@@ -149,12 +167,14 @@ select {
 }
 
 /* ANIMATION */
-#uploadForm label span.label {
+#uploadForm label span.input-label {
     transition: top 0.3s ease 0s, color 0.3s ease 0s;
 }
 
 #uploadForm input:focus,
-#uploadForm select:focus {
+#uploadForm select:focus,
+#uploadForm textarea:focus {
+    border: 3px solid #b71e4c;
     transition: all 0.3s ease;
     outline: none !important;
 }
@@ -165,11 +185,9 @@ select {
     box-shadow: none;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="file"]:focus,
-input[type="date"]:focus,
-select:focus {
+input:focus,
+select:focus,
+textarea:focus {
     border: 3px solid #b71e4c !important;
 }
 

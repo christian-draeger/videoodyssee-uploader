@@ -15,6 +15,8 @@
             href="styles/form.css"/>
     <link rel="stylesheet" th:href="@{styles/file-input.css}"
             href="styles/file-input.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
+
 
     <script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);</script>
 </head>
@@ -29,12 +31,19 @@
         </div>
         <form id="uploadForm" method="POST" action="/add" enctype="multipart/form-data">
             <label>
-                <input type="text" name="title" placeholder="Title of the video" class="form-control"/>
-                <span class="label">Title</span>
+                <input type="text" name="title" placeholder="Title of the video" required="true"/>
+                <span class="input-label">Title</span>
             </label>
-
             <label>
-                <select name="conference" class="form-control">
+                <input type="text" name="speakers" placeholder="(optional)"/>
+                <span class="input-label">Persons</span>
+            </label>
+            <label>
+                <input type="text" name="tags" placeholder="(optional)"/>
+                <span class="input-label">Tags</span>
+            </label>
+            <label>
+                <select name="conference" required="true">
                     <option th:each="con : ${conferences}" th:value="${con}" th:text="${con.title}">
                         Event or Conference
                     </option>
@@ -42,13 +51,24 @@
                     <option>event 2</option>
                     <option>other event</option>
                 </select>
-                <span class="label">Event</span>
+                <span class="input-label">Event</span>
             </label>
             <label>
-                <input type="date" name="releaseDate" class="form-control"/>
-                <span class="label">Date</span>
+                <select name="language" required="true">
+                    <option>German</option>
+                    <option>English</option>
+                    <option>French</option>
+                    <option>Spanish</option>
+                    <option>Japanese</option>
+                    <option>Russian</option>
+                </select>
+                <span class="input-label">Language</span>
             </label>
-            <input type="file" id="file" name="video" class="inputfile hidden" />
+            <label>
+                <input type="date" name="releaseDate" required="true"/>
+                <span class="input-label">Date</span>
+            </label>
+            <input type="file" id="file" name="video" class="inputfile hidden" required="true" />
             <label for="file">
                 <strong class="btn-custom">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
@@ -58,12 +78,20 @@
                 <span></span>
             </label>
             <label>
-                <input type="text" name="name" placeholder="Your Name or Nickname" class="form-control"/>
-                <span class="label">Name</span>
+                <input type="text" name="name" placeholder="Your Name or Nickname" required="true"/>
+                <span class="input-label">Name</span>
             </label>
             <label>
-                <input type="email" name="email" placeholder="Your E-Mail address" class="form-control"/>
-                <span class="label">E-Mail</span>
+                <input type="email" name="email" placeholder="Your E-Mail address" required="true"/>
+                <span class="input-label">E-Mail</span>
+            </label>
+            <label>
+                <input type="url" name="url" placeholder="(optional)"/>
+                <span class="input-label">Link</span>
+            </label>
+            <label>
+                <textarea name="description" placeholder="(optional)"></textarea>
+                <span class="input-label">Description</span>
             </label>
 
             <button type="submit" class="btn btn-default btn-block btn-custom">Upload</button>

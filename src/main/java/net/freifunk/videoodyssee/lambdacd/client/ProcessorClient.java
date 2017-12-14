@@ -1,5 +1,9 @@
 package net.freifunk.videoodyssee.lambdacd.client;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +29,9 @@ public class ProcessorClient {
     @Value("${lambdacd.trigger.pass}")
     private String pass;
 
+    @Value("${upload.path}")
+    private String uploadPath;
+
     public void trigger(UploadForm form) {
 
         log.info("trigger lambdacd method called");
@@ -34,9 +41,16 @@ public class ProcessorClient {
             payload.put("name", form.getName());
             payload.put("email", form.getEmail());
             payload.put("title", form.getTitle());
+            payload.put("subtitle", "");
+            payload.put("date", getCurrentDate());
             payload.put("releaseDate", form.getReleaseDate());
-            payload.put("conference", form.getConference());
-            payload.put("fileName", form.getVideo().getOriginalFilename());
+            payload.put("videoFilePath", uploadPath + form.getVideo().getOriginalFilename());
+            payload.put("conferenceAcronym", "");
+            payload.put("language", "");
+            payload.put("link", "");
+            payload.put("description", "");
+            payload.put("tags", "[]");
+            payload.put("persons", "[]");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -54,5 +68,11 @@ public class ProcessorClient {
         }
 
         log.info("lambdaCD responds with status {}", response.getStatus());
+    }
+
+    private String getCurrentDate() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        return dateFormat.format(date).toString();
     }
 }

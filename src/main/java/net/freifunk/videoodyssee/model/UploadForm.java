@@ -11,17 +11,16 @@ import lombok.Setter;
 @Setter
 public class UploadForm {
 
-    private String name;
-    private String email;
     private String title;
-    private String releaseDate;
-    private String conference;
-    private String language;
-    private String link;
-    private String description;
-    private String subtitle;
-    private MultipartFile video;
     private List<String> persons;
     private List<String> tags;
+    private String conference;
+    private String language;
+    private String releaseDate;
+    private MultipartFile video;
+    private String name;
+    private String email;
+    private String link;
+    private String description;
 
 }

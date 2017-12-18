@@ -31,7 +31,7 @@
         </div>
         <form id="uploadForm" method="POST" action="/add" enctype="multipart/form-data">
             <label>
-                <input type="text" name="title" placeholder="Title of the video" required="true"/>
+                <input type="text" name="title" placeholder="Title of the video" th:attr="class=${titleErrorMessage != null ? 'invalid' : ''}"/>
                 <span class="input-label">Title</span>
             </label>
             <label>
@@ -43,7 +43,7 @@
                 <span class="input-label">Tags</span>
             </label>
             <label>
-                <select name="conference" required="true">
+                <select name="conference" th:attr="class=${conferenceErrorMessage != null ? 'invalid' : ''}">
                     <option th:each="con : ${conferences}" th:value="${con}" th:text="${con.title}">
                         Event or Conference
                     </option>
@@ -54,11 +54,12 @@
                 <span class="input-label">Event</span>
             </label>
             <label>
-                <select name="language" required="true">
+                <select name="language" th:attr="class=${languageErrorMessage != null ? 'invalid' : ''}">
                     <option>German</option>
                     <option>English</option>
                     <option>French</option>
                     <option>Spanish</option>
+                    <option>Swiss German</option>
                     <option>Japanese</option>
                     <option>Russian</option>
                 </select>
@@ -68,7 +69,7 @@
                 <input id="today" type="date" name="releaseDate" required="true"/>
                 <span class="input-label">Date</span>
             </label>
-            <input type="file" id="file" name="video" class="inputfile hidden" required="true" />
+            <input type="file" id="file" name="video" class="inputfile hidden"/>
             <label for="file">
                 <strong class="btn-custom">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
@@ -78,15 +79,15 @@
                 <span></span>
             </label>
             <label>
-                <input type="text" name="name" placeholder="Your Name or Nickname" required="true"/>
+                <input type="text" name="name" placeholder="Your Name or Nickname" th:attr="class=${nameErrorMessage != null ? 'invalid' : ''}"/>
                 <span class="input-label">Name</span>
             </label>
             <label>
-                <input type="email" name="email" placeholder="Your E-Mail address" required="true"/>
+                <input type="email" name="email" placeholder="Your E-Mail address" th:attr="class=${emailErrorMessage != null ? 'invalid' : ''}"/>
                 <span class="input-label">E-Mail</span>
             </label>
             <label>
-                <input type="url" name="url" placeholder="(optional)"/>
+                <input type="text" name="url" placeholder="(optional)"/>
                 <span class="input-label">Link</span>
             </label>
             <label>
@@ -99,6 +100,7 @@
     </div>
 </div>
 <div class="footer"><img src="pics/footer-transparent.png"/></div>
+<!--<div class="footer"></div>-->
 <div id="particles-js"></div>
 <script type="application/javascript" src="/webjars/jquery/3.1.1/jquery.min.js"></script>
 <script type="application/javascript" src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>

@@ -76,12 +76,17 @@ public class RegistrationController {
         // TODO: validate if file is video file
         final MultipartFile file = form.getVideo();
 
+        model.put("title", form.getTitle());
+        model.put("persons", form.getPersons());
+        model.put("tags", form.getTags());
+        model.put("conference", form.getConference());
+        model.put("language", form.getLanguage());
+        model.put("releaseDate", form.getReleaseDate());
+        model.put("videoName", file.getOriginalFilename());
         model.put("name", form.getName());
         model.put("email", form.getEmail());
-        model.put("title", form.getTitle());
-        model.put("releaseDate", form.getReleaseDate());
-        model.put("conference", form.getConference());
-        model.put("videoName", file.getOriginalFilename());
+        model.put("link", form.getLink());
+        model.put("description", form.getDescription());
 
         storageService.store(file);
         fileMover.copyTo(uploadPath, file);

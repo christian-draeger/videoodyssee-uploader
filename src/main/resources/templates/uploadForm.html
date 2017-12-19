@@ -13,6 +13,8 @@
             href="styles/background.css"/>
     <link rel="stylesheet" th:href="@{styles/form.css}"
             href="styles/form.css"/>
+    <link rel="stylesheet" th:href="@{styles/flip-box.css}"
+            href="styles/flip-box.css"/>
     <link rel="stylesheet" th:href="@{styles/file-input.css}"
             href="styles/file-input.css"/>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
@@ -47,9 +49,7 @@
                     <option th:each="con : ${conferences}" th:value="${con}" th:text="${con.title}">
                         Event or Conference
                     </option>
-                    <option>conference 1</option>
-                    <option>event 2</option>
-                    <option>other event</option>
+                    <option th:remove="${#strings.isEmpty(con) ? 'none' : 'all'}">conference 1</option>
                 </select>
                 <span class="input-label">Event</span>
             </label>
@@ -95,9 +95,20 @@
                 <span class="input-label">Description</span>
             </label>
 
-            <button type="submit" class="btn btn-default btn-block btn-custom">Upload</button>
+            <a href="#login-box">
+                <button type="submit" class="btn btn-default btn-block btn-custom">Upload</button>
+            </a>
         </form>
     </div>
+
+    <label id="flip">
+        <input type="checkbox"  />
+        <div class="card">
+            <div class="front">Front</div>
+            <div class="back">Back</div>
+        </div>
+    </label>
+
 </div>
 <div class="footer"><img src="pics/footer-transparent.png"/></div>
 <!--<div class="footer"></div>-->

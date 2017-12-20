@@ -89,7 +89,6 @@ public class RegistrationController {
         model.put("description", form.getDescription());
 
         storageService.store(file);
-        fileMover.copyTo(uploadPath, file);
         processorClient.trigger(form);
 
         model.put("message", "Upload successful");

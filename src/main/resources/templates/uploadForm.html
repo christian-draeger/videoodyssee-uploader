@@ -24,7 +24,7 @@
 </head>
 <body>
 <div class="container">
-    <div id="login-box" th:attr="class=${errorMessage != null ? 'shake' : ''}" >
+    <div th:attr="class=${errorMessage != null ? 'shake login-box front' : 'login-box front'}">
         <div class="logo">
             <a href="http://media.freifunk.net" target="_blank">
                 <img src="pics/logo-small.png" class="img img-responsive center-block pulse"/>
@@ -37,7 +37,7 @@
                 <span class="input-label">Title</span>
             </label>
             <label>
-                <input type="text" name="speakers" placeholder="(optional)"/>
+                <input type="text" name="persons" placeholder="(optional)"/>
                 <span class="input-label">Persons</span>
             </label>
             <label>
@@ -87,7 +87,7 @@
                 <span class="input-label">E-Mail</span>
             </label>
             <label>
-                <input type="text" name="url" placeholder="(optional)"/>
+                <input type="text" name="link" placeholder="(optional)"/>
                 <span class="input-label">Link</span>
             </label>
             <label>
@@ -99,6 +99,10 @@
                 <button type="submit" class="btn btn-default btn-block btn-custom">Upload</button>
             </a>
         </form>
+    </div>
+
+    <div class="login-box front">
+
     </div>
 
     <label id="flip">

@@ -1,4 +1,4 @@
-#login-box {
+.login-box {
     position: relative;
     margin: 0 auto;
     width: 350px;
@@ -14,31 +14,31 @@
     backface-visibility: hidden;
 }
 
-#login-box:target {
+.login-box:target {
     transform: rotateY(160deg);
     -webkit-transform: rotateY(160deg);
     box-shadow: 0 20px 20px #111;
 
 }
 
-#login-box .logo .logo-caption {
+.login-box .logo .logo-caption {
     font-family: 'Poiret One', cursive;
     color: white;
     text-align: center;
     margin-bottom: 0;
 }
 
-#login-box .logo .tweak {
+.login-box .logo .tweak {
     color: #b71e4c;
 }
 
-#login-box #uploadForm {
+.login-box #uploadForm {
     padding-top: 30px;
 }
 
-#login-box #uploadForm label input,
-#login-box #uploadForm label select,
-#login-box #uploadForm label textarea {
+.login-box #uploadForm label input,
+.login-box #uploadForm label select,
+.login-box #uploadForm label textarea {
     border-radius: 0;
     background: #626060;
     border: 0;
@@ -47,21 +47,21 @@
     font-family: 'Nunito', sans-serif;
 }
 
-#login-box #uploadForm label:first-child input {
+.login-box #uploadForm label:first-child input {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
-#login-box #uploadForm label:last-of-type textarea {
+.login-box #uploadForm label:last-of-type textarea {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
 
-#login-box a {
+.login-box a {
     text-decoration: none;
 }
 
-#login-box button.btn-custom {
+.login-box button.btn-custom {
     border-radius: 10px;
     margin-top: 5px;
     font-size: 20px;
@@ -72,7 +72,7 @@
     font-family: 'Nunito', sans-serif;
 }
 
-#login-box .btn-custom:hover {
+.login-box .btn-custom:hover {
     -webkit-transition: all 500ms ease;
     -moz-transition: all 500ms ease;
     -ms-transition: all 500ms ease;

@@ -46,7 +46,7 @@
             </label>
             <label>
                 <select name="conference" th:attr="class=${conferenceErrorMessage != null ? 'invalid' : ''}">
-                    <option th:each="con : ${conferences}" th:value="${con}" th:text="${con.title}">
+                    <option th:each="con : ${conferences}" th:value="${con.acronym}" th:text="${con.title}">
                         Event or Conference
                     </option>
                     <option th:remove="${#strings.isEmpty(con) ? 'none' : 'all'}">conference 1</option>

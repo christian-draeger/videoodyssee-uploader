@@ -42,11 +42,11 @@ public class ProcessorClient {
             payload.put("name", form.getName());
             payload.put("email", form.getEmail());
             payload.put("title", form.getTitle());
-            payload.put("subtitle", "some subtitle string"); //TODO: add  input to form
+            payload.put("subtitle", form.getSubTitle());
             payload.put("date", getCurrentDate());
             payload.put("releaseDate", form.getReleaseDate());
             payload.put("videoFilePath", tempUploadDir + form.getVideo().getOriginalFilename());
-            payload.put("conferenceAcronym", "fff17"); //TODO: acronym from conf
+            payload.put("conferenceAcronym", form.getConference());
             payload.put("language", "deu"); //TODO: acronym from lang
             payload.put("link", form.getLink());
             payload.put("description", form.getDescription());

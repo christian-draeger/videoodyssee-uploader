@@ -10,6 +10,7 @@ import lombok.Setter;
 public class UploadForm {
 
     private String title;
+    private String subTitle;
     private String persons;
     private String tags;
     private String conference;

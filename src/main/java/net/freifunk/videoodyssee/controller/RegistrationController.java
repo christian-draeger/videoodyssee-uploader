@@ -27,7 +27,6 @@ import net.freifunk.videoodyssee.lambdacd.client.ProcessorClient;
 import net.freifunk.videoodyssee.model.UploadForm;
 import net.freifunk.videoodyssee.storage.StorageFileNotFoundException;
 import net.freifunk.videoodyssee.storage.StorageService;
-import net.freifunk.videoodyssee.upload.FileMover;
 import net.freifunk.videoodyssee.upload.Validator;
 import net.freifunk.videoodyssee.voctoweb.client.Conferences;
 import net.freifunk.videoodyssee.voctoweb.client.PublicApiClient;
@@ -40,9 +39,6 @@ public class RegistrationController {
 
     @Value("${upload.path}")
     private String uploadPath;
-
-    @Autowired
-    private FileMover fileMover;
 
     @Autowired
     private Validator validator;

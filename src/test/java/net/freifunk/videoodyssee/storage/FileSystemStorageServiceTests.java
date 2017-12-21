@@ -2,8 +2,6 @@ package net.freifunk.videoodyssee.storage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Random;
-
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -13,13 +11,11 @@ import org.springframework.mock.web.MockMultipartFile;
 @Ignore
 public class FileSystemStorageServiceTests {
 
-    private StorageProperties properties = new StorageProperties();
     private FileSystemStorageService service;
 
     @Before
     public void init() {
-        properties.setLocation("target/files/" + Math.abs(new Random().nextLong()));
-        service = new FileSystemStorageService(properties);
+        service = new FileSystemStorageService();
         service.init();
     }
 

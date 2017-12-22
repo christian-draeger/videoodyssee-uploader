@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 public class PublicApiClient {
 
     private static final String PUBLIC_CONFERENCES = "/public/conferences";
-    private static final String PUBLIC_EVENTS = "/public/listOfEvents";
+    private static final String PUBLIC_EVENTS = "/public/events";
     @Value("${voctoweb.baseuri}")
     private String baseUri;
 

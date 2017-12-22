@@ -3,6 +3,9 @@ package net.freifunk.videoodyssee.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,6 +27,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.extern.slf4j.Slf4j;
 import net.freifunk.videoodyssee.lambdacd.client.ProcessorClient;
+import net.freifunk.videoodyssee.model.Languages;
 import net.freifunk.videoodyssee.model.UploadForm;
 import net.freifunk.videoodyssee.storage.StorageFileNotFoundException;
 import net.freifunk.videoodyssee.storage.StorageService;
@@ -58,6 +62,8 @@ public class RegistrationController {
     public String uploaderForm(Model model) {
         Conferences listOfAllConferences = publicApiClient.getListOfAllConferences();
         model.addAttribute("conferences", listOfAllConferences.getConferencesList());
+        Map<String, String> languages = Arrays.stream(Languages.values()).collect(Collectors.toMap(Languages::getAbbrevation, Languages::getValue));
+        model.addAttribute("languages", languages);
         return "uploadForm";
     }
 

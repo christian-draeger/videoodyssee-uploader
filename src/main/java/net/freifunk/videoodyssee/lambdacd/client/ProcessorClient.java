@@ -47,7 +47,7 @@ public class ProcessorClient {
             payload.put("releaseDate", form.getReleaseDate());
             payload.put("videoFilePath", tempUploadDir + form.getVideo().getOriginalFilename());
             payload.put("conferenceAcronym", form.getConference());
-            payload.put("language", "deu"); //TODO: acronym from lang
+            payload.put("language", form.getLanguage());
             payload.put("link", form.getLink());
             payload.put("description", form.getDescription());
             payload.put("tags", new JSONArray().put(form.getTags()));

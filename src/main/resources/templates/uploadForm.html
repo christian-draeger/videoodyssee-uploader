@@ -55,13 +55,9 @@
             </label>
             <label>
                 <select name="language" th:attr="class=${languageErrorMessage != null ? 'invalid' : ''}">
-                    <option>German</option>
-                    <option>English</option>
-                    <option>French</option>
-                    <option>Spanish</option>
-                    <option>Swiss German</option>
-                    <option>Japanese</option>
-                    <option>Russian</option>
+                    <option th:each="lang : ${languages}" th:value="${lang.key}" th:text="${lang.value}">
+                        lang
+                    </option>
                 </select>
                 <span class="input-label">Language</span>
             </label>

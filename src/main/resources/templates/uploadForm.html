@@ -15,8 +15,6 @@
             href="styles/animate.css"/>
     <link rel="stylesheet" th:href="@{styles/form.css}"
             href="styles/form.css"/>
-    <link rel="stylesheet" th:href="@{styles/upload-status.css}"
-            href="styles/upload-status.css"/>
     <link rel="stylesheet" th:href="@{styles/flip-box.css}"
             href="styles/flip-box.css"/>
     <link rel="stylesheet" th:href="@{styles/css.css}"
@@ -121,19 +119,23 @@
             <ul class="notification-bar">
                 <li>
                     <i class="ion-checkmark-circled"></i>
-                    <span>step 1</span>
+                    <span class="animated slideInDown">Fix Metadata</span>
                 </li>
                 <li>
                     <i class="ion-close-circled"></i>
-                    <span>step 2</span>
+                    <span>Encode Video</span>
                 </li>
                 <li>
                     <i>3</i>
-                    <span>step 3</span>
+                    <span>Confirm Publish</span>
                 </li>
                 <li>
                     <i>4</i>
-                    <span>step 4</span>
+                    <span>Upload to CDN &amp; YouTube</span>
+                </li>
+                <li>
+                    <i>5</i>
+                    <span>Publish Video</span>
                 </li>
             </ul>
         </div>

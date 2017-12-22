@@ -1,56 +1,89 @@
-#upload .wrapper {
-    padding: 20px;
+h2 {
+    text-align: center;
+    color: white;
 }
 
+.login-box.back {
+    display: none;
+}
+
+#upload:target.login-box.back {
+    display: block;
+    padding-bottom: 50px;
+}
+
+#upload .wrapper {
+    padding-left: 20px;
+}
+
+/* circles */
 .notification-bar {
     color: darkgrey;
     list-style: none;
+    height: 400px;
     padding: 0;
     margin: 0;
     font-size: large;
     position: relative;
 }
 
+/* bar between circles */
 .notification-bar:after {
     content: '';
     width: 1px;
+    border: 5px solid grey;
     height: 100%;
     background-color: grey;
     position: absolute;
-    top: 0;
+    top: 3px;
     left: 15px;
     z-index: -1;
 }
 
+/* step bar height */
 .notification-bar li {
-    margin-top: 60px;
+    margin-top: 30px;
 }
 
+/* span with steps text */
 .notification-bar li span {
-    margin-left: 50px;
-    margin-top: -24px;
-    border: 1px solid grey;
+    margin-left: 65px;
+    vertical-align: top;
+    line-height: 0;
+    position: relative;
+    top: -19px;
+    white-space: nowrap;
     padding: 10px;
-    background-color: #626060;
+    font-size: 15px;
+    color: white;
+    background-color: grey;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
+/* arrow left from span */
+.notification-bar li span:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 18px solid transparent;
+    border-bottom: 18px solid transparent;
+    border-right: 25px solid grey;
+    position: absolute;
+    top: 0;
+    left: -25px;
+    z-index: -5;
+}
+
+/* circle label */
 .notification-bar li i {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     display: block;
     text-align: center;
-    line-height: 30px;
-    border: 1px solid grey;
+    line-height: 36px;
+    border: 3px solid grey;
     border-radius: 50%;
     background-color: #b71e4c;
-}
-
-.notification-bar li i:after {
-    content: '';
-    width: 40px;
-    height: 1px;
-    position: absolute;
-    background-color: grey;
-    margin-top: 15px;
-    z-index: -1;
 }

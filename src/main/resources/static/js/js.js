@@ -1,3 +1,18 @@
+$( document ).ready(function() {
+    var url = $(location).attr('href');
+    var isForm = url.indexOf('#upload') !== -1;
+
+    if (isForm) {
+        $('.login-box.back').show();
+    } else {
+        $('.login-box.front').show();
+    }
+
+    $('.login-box.front button[type=submit]').click(function(){
+        $('.login-box.front').addClass("animated bounceOutUp");
+    });
+});
+
 $.getScript("https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js", function(){
     particlesJS('particles-js',
         {

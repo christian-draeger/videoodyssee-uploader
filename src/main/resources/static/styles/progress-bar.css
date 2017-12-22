@@ -1,0 +1,76 @@
+.progress {
+    height: 70px;
+    width: 520px;
+    margin-top: 260px;
+    text-align: center;
+    background-color: transparent;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+}
+.progress .circle,
+.progress .bar {
+    display: inline-block;
+    background: #fff;
+    width: 40px; height: 40px;
+    border-radius: 40px;
+    border: 1px solid #d5d5da;
+}
+.progress .bar {
+    position: relative;
+    width: 80px;
+    height: 6px;
+    top: -33px;
+    margin-left: -5px;
+    margin-right: -5px;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+}
+.progress .circle .label {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 32px;
+    margin-top: 3px;
+    color: #b5b5ba;
+    font-size: 17px;
+}
+.progress .circle .title {
+    color: #b5b5ba;
+    font-size: 13px;
+    line-height: 30px;
+    margin-left: -5px;
+}
+
+/* Done / Active */
+.progress .bar.done,
+.progress .circle.done {
+    background: #81CE97;
+}
+.progress .bar.active {
+    background: linear-gradient(to right, #81CE97 40%, #FFF 60%);
+}
+.progress .circle.done .label {
+    color: #FFF;
+    background: #23af3f;
+}
+.progress .circle.done .title {
+    color: #23af3f;
+}
+.progress .circle.active .label {
+    color: #FFF;
+    background: #0c95be;
+}
+.progress .circle.active .title {
+    color: #0c95be;
+}
+
+.rotate {
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+}

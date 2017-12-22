@@ -1,0 +1,13 @@
+h2 {
+    text-align: center;
+    color: white;
+}
+
+.login-box.back {
+    display: none;
+}
+
+#upload:target.login-box.back {
+    display: block;
+    height: 750px;
+}

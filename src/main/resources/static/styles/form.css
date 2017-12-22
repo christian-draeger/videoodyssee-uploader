@@ -8,17 +8,15 @@
     border-radius: 0 0 10px 10px;
     background: #302e2d;
     min-height: 250px;
-    padding: 20px;
+    padding: 100px 20px 20px;
+    top: -75px;
     margin-bottom: 20px;
     z-index: 9999;
     backface-visibility: hidden;
 }
 
-.login-box:target {
-    transform: rotateY(160deg);
-    -webkit-transform: rotateY(160deg);
-    box-shadow: 0 20px 20px #111;
-
+.login-box.front {
+    display: none;
 }
 
 .login-box .logo .logo-caption {
@@ -209,70 +207,4 @@ textarea:focus {
     transform-origin:70% 70%;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-}
-
-@keyframes pulse_animation {
-    0% { transform: scale(1); }
-    30% { transform: scale(1); }
-    40% { transform: scale(1.08); }
-    50% { transform: scale(1); }
-    60% { transform: scale(1); }
-    70% { transform: scale(1.05); }
-    80% { transform: scale(1); }
-    100% { transform: scale(1); }
-}
-
-@keyframes shake {
-    from, to {
-        transform: translate3d(0, 0, 0);
-    }
-
-    10%, 30%, 50%, 70%, 90% {
-        transform: translate3d(-10px, 0, 0);
-    }
-
-    20%, 40%, 60%, 80% {
-        transform: translate3d(10px, 0, 0);
-    }
-}
-
-.shake {
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    animation-name: shake;
-}
-
-@keyframes bounceInDown {
-    from, 60%, 75%, 90%, to {
-        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-        transform: translateX(-50%);
-    }
-
-    0% {
-        opacity: 0;
-        transform: translate3d(0, -3000px, 0);
-    }
-
-    60% {
-        opacity: 1;
-        transform: translate3d(0, 25px, 0);
-    }
-
-    75% {
-        transform: translate3d(0, -10px, 0);
-    }
-
-    90% {
-        transform: translate3d(0, 5px, 0);
-    }
-
-    to {
-        transform: none;
-    }
-}
-
-.bounceInDown {
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    animation-name: bounceInDown;
 }

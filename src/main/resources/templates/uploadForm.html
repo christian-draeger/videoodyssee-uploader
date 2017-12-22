@@ -11,8 +11,12 @@
             href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"/>
     <link rel="stylesheet" th:href="@{styles/background.css}"
             href="styles/background.css"/>
+    <link rel="stylesheet" th:href="@{styles/animate.css}"
+            href="styles/animate.css"/>
     <link rel="stylesheet" th:href="@{styles/form.css}"
             href="styles/form.css"/>
+    <link rel="stylesheet" th:href="@{styles/upload-status.css}"
+            href="styles/upload-status.css"/>
     <link rel="stylesheet" th:href="@{styles/flip-box.css}"
             href="styles/flip-box.css"/>
     <link rel="stylesheet" th:href="@{styles/css.css}"
@@ -21,6 +25,8 @@
             href="styles/file-input.css"/>
     <link rel="stylesheet" th:href="@{styles/tooltip.css}"
             href="styles/tooltip.css"/>
+    <link rel="stylesheet" th:href="@{styles/progress-bar.css}"
+            href="styles/progress-bar.css"/>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
 
 
@@ -28,7 +34,7 @@
 </head>
 <body>
 <div class="container">
-    <div th:attr="class=${errorMessage != null ? 'shake login-box front' : 'login-box front'}">
+    <div th:attr="class='animated login-box front ' + ${errorMessage != null ? 'shake' : 'bounceInDown'}">
         <div th:if="${errorMessage}">
             <div class="alert alert-danger alert-dismissable animated fadeInDown">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -107,17 +113,44 @@
         </form>
     </div>
 
-    <div id="upload" class="login-box back">
+    <div id="upload" class="login-box back animated bounceInDown">
+        <h2>Upload Status</h2>
 
+        <div class="progress">
+            <div class="circle done rotate">
+                <span class="label rotate">1</span>
+                <span class="title">title 1</span>
+            </div>
+            <span class="bar done rotate"></span>
+            <div class="circle done">
+                <span class="label rotate">2</span>
+                <span class="title">title 2</span>
+            </div>
+            <span class="bar half"></span>
+            <div class="circle active">
+                <span class="label rotate">3</span>
+                <span class="title">title 3</span>
+            </div>
+            <span class="bar"></span>
+            <div class="circle">
+                <span class="label rotate">4</span>
+                <span class="title">title 4</span>
+            </div>
+            <span class="bar"></span>
+            <div class="circle">
+                <span class="label rotate">5</span>
+                <span class="title">title 5</span>
+            </div>
+        </div>
     </div>
 
-    <label id="flip">
-        <input type="checkbox"  />
-        <div class="card">
-            <div class="front">Front</div>
-            <div class="back">Back</div>
-        </div>
-    </label>
+    <!--<label id="flip">-->
+        <!--<input type="checkbox"  />-->
+        <!--<div class="card">-->
+            <!--<div class="front">Front</div>-->
+            <!--<div class="back">Back</div>-->
+        <!--</div>-->
+    <!--</label>-->
 
 </div>
 <div class="footer"><img src="pics/footer-transparent.png"/></div>
@@ -127,5 +160,6 @@
 <script type="application/javascript" src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
 <script type="application/javascript" src="js/js.js"></script>
 <script type="application/javascript" src="js/file-input.js"></script>
+<script type="application/javascript" src="js/progress-bar.js"></script>
 </body>
 </html>

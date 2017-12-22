@@ -20,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 public class PublicApiClient {
 
     private static final String PUBLIC_CONFERENCES = "/public/conferences";
+    private static final String PUBLIC_EVENTS = "/public/listOfEvents";
     @Value("${voctoweb.baseuri}")
     private String baseUri;
 
@@ -59,6 +60,16 @@ public class PublicApiClient {
             log.warn("Could not get Conferences from voctoweb!", e);
         }
         return new Conferences();
+    }
+
+    public Events getListOfallEvents() {
+        try {
+            HttpResponse<Events> eventsHttpResponse = Unirest.get(baseUri + PUBLIC_EVENTS).asObject(Events.class);
+            return eventsHttpResponse.getBody();
+        } catch (UnirestException e) {
+            log.warn("Could not get Events from voctoweb!", e);
+        }
+        return new Events();
     }
 
 }

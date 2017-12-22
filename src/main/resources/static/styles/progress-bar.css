@@ -1,76 +1,56 @@
-.progress {
-    height: 70px;
-    width: 520px;
-    margin-top: 260px;
-    text-align: center;
-    background-color: transparent;
-    transform: rotate(90deg);
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
+#upload .wrapper {
+    padding: 20px;
 }
-.progress .circle,
-.progress .bar {
-    display: inline-block;
-    background: #fff;
-    width: 40px; height: 40px;
-    border-radius: 40px;
-    border: 1px solid #d5d5da;
-}
-.progress .bar {
+
+.notification-bar {
+    color: darkgrey;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: large;
     position: relative;
-    width: 80px;
-    height: 6px;
-    top: -33px;
-    margin-left: -5px;
-    margin-right: -5px;
-    border-left: none;
-    border-right: none;
-    border-radius: 0;
 }
-.progress .circle .label {
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    line-height: 32px;
-    border-radius: 32px;
-    margin-top: 3px;
-    color: #b5b5ba;
-    font-size: 17px;
+
+.notification-bar:after {
+    content: '';
+    width: 1px;
+    height: 100%;
+    background-color: grey;
+    position: absolute;
+    top: 0;
+    left: 15px;
+    z-index: -1;
 }
-.progress .circle .title {
-    color: #b5b5ba;
-    font-size: 13px;
+
+.notification-bar li {
+    margin-top: 60px;
+}
+
+.notification-bar li span {
+    margin-left: 50px;
+    margin-top: -24px;
+    border: 1px solid grey;
+    padding: 10px;
+    background-color: #626060;
+}
+
+.notification-bar li i {
+    width: 30px;
+    height: 30px;
+    display: block;
+    text-align: center;
     line-height: 30px;
-    margin-left: -5px;
+    border: 1px solid grey;
+    border-radius: 50%;
+    background-color: #b71e4c;
 }
 
-/* Done / Active */
-.progress .bar.done,
-.progress .circle.done {
-    background: #81CE97;
-}
-.progress .bar.active {
-    background: linear-gradient(to right, #81CE97 40%, #FFF 60%);
-}
-.progress .circle.done .label {
-    color: #FFF;
-    background: #23af3f;
-}
-.progress .circle.done .title {
-    color: #23af3f;
-}
-.progress .circle.active .label {
-    color: #FFF;
-    background: #0c95be;
-}
-.progress .circle.active .title {
-    color: #0c95be;
-}
-
-.rotate {
-    transform: rotate(-90deg);
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    -o-transform: rotate(-90deg);
+.notification-bar li i:after {
+    content: '';
+    width: 40px;
+    height: 1px;
+    position: absolute;
+    background-color: grey;
+    margin-top: 15px;
+    z-index: -1;
 }

@@ -28,6 +28,7 @@
     <link rel="stylesheet" th:href="@{styles/progress-bar.css}"
             href="styles/progress-bar.css"/>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
 
 
     <script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);</script>
@@ -116,32 +117,27 @@
     <div id="upload" class="login-box back animated bounceInDown">
         <h2>Upload Status</h2>
 
-        <div class="progress">
-            <div class="circle done rotate">
-                <span class="label rotate">1</span>
-                <span class="title">title 1</span>
-            </div>
-            <span class="bar done rotate"></span>
-            <div class="circle done">
-                <span class="label rotate">2</span>
-                <span class="title">title 2</span>
-            </div>
-            <span class="bar half"></span>
-            <div class="circle active">
-                <span class="label rotate">3</span>
-                <span class="title">title 3</span>
-            </div>
-            <span class="bar"></span>
-            <div class="circle">
-                <span class="label rotate">4</span>
-                <span class="title">title 4</span>
-            </div>
-            <span class="bar"></span>
-            <div class="circle">
-                <span class="label rotate">5</span>
-                <span class="title">title 5</span>
-            </div>
+        <div class="wrapper">
+            <ul class="notification-bar">
+                <li>
+                    <i class="ion-checkmark-circled"></i>
+                    <span>step 1</span>
+                </li>
+                <li>
+                    <i class="ion-close-circled"></i>
+                    <span>step 2</span>
+                </li>
+                <li>
+                    <i>3</i>
+                    <span>step 3</span>
+                </li>
+                <li>
+                    <i>4</i>
+                    <span>step 4</span>
+                </li>
+            </ul>
         </div>
+
     </div>
 
     <!--<label id="flip">-->

@@ -15,8 +15,12 @@
             href="styles/form.css"/>
     <link rel="stylesheet" th:href="@{styles/flip-box.css}"
             href="styles/flip-box.css"/>
+    <link rel="stylesheet" th:href="@{styles/css.css}"
+            href="styles/css.css"/>
     <link rel="stylesheet" th:href="@{styles/file-input.css}"
             href="styles/file-input.css"/>
+    <link rel="stylesheet" th:href="@{styles/tooltip.css}"
+            href="styles/tooltip.css"/>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
 
 
@@ -25,6 +29,12 @@
 <body>
 <div class="container">
     <div th:attr="class=${errorMessage != null ? 'shake login-box front' : 'login-box front'}">
+        <div th:if="${errorMessage}">
+            <div class="alert alert-danger alert-dismissable animated fadeInDown">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <span th:text="${errorMessage}">error message</span>
+            </div>
+        </div>
         <div class="logo">
             <a href="http://media.freifunk.net" target="_blank">
                 <img src="pics/logo-small.png" class="img img-responsive center-block pulse"/>
@@ -32,7 +42,7 @@
             <h1 class="logo-caption">Video <span class="tweak">U</span>pload</h1>
         </div>
         <form id="uploadForm" method="POST" action="/add" enctype="multipart/form-data">
-            <label>
+            <label class="tooltip-right" th:attr="data-tooltip=${titleErrorMessage != null ? 'Required field. ' + titleErrorMessage : ''}">
                 <input type="text" name="title" placeholder="Title of the video" th:attr="class=${titleErrorMessage != null ? 'invalid' : ''}"/>
                 <span class="input-label">Title</span>
             </label>
@@ -44,8 +54,8 @@
                 <input type="text" name="tags" placeholder="(optional)"/>
                 <span class="input-label">Tags</span>
             </label>
-            <label>
-                <select name="conference" th:attr="class=${conferenceErrorMessage != null ? 'invalid' : ''}">
+            <label class="tooltip-right" th:attr="data-tooltip=${conferenceErrorMessage != null ? 'Required field. ' + conferenceErrorMessage : ''}">
+            <select name="conference" th:attr="class=${conferenceErrorMessage != null ? 'invalid' : ''}">
                     <option th:each="con : ${conferences}" th:value="${con.acronym}" th:text="${con.title}">
                         Event or Conference
                     </option>
@@ -53,7 +63,7 @@
                 </select>
                 <span class="input-label">Event</span>
             </label>
-            <label>
+            <label class="tooltip-right" th:attr="data-tooltip=${languageErrorMessage != null ? 'Required field. ' + languageErrorMessage : ''}">
                 <select name="language" th:attr="class=${languageErrorMessage != null ? 'invalid' : ''}">
                     <option th:each="lang : ${languages}" th:value="${lang.key}" th:text="${lang.value}">
                         lang
@@ -74,12 +84,12 @@
                 </strong>
                 <span></span>
             </label>
-            <label>
-                <input type="text" name="name" placeholder="Your Name or Nickname" th:attr="class=${nameErrorMessage != null ? 'invalid' : ''}"/>
+            <label class="tooltip-right" th:attr="data-tooltip=${nameErrorMessage != null ? 'Required field. ' + nameErrorMessage : ''}">
+            <input type="text" name="name" placeholder="Your Name or Nickname" th:attr="class=${nameErrorMessage != null ? 'invalid' : ''}"/>
                 <span class="input-label">Name</span>
             </label>
-            <label>
-                <input type="email" name="email" placeholder="Your E-Mail address" th:attr="class=${emailErrorMessage != null ? 'invalid' : ''}"/>
+            <label class="tooltip-right" th:attr="data-tooltip=${emailErrorMessage != null ? 'Required field. ' + emailErrorMessage : ''}">
+            <input type="email" name="email" placeholder="Your E-Mail address" th:attr="class=${emailErrorMessage != null ? 'invalid' : ''}"/>
                 <span class="input-label">E-Mail</span>
             </label>
             <label>
@@ -91,13 +101,13 @@
                 <span class="input-label">Description</span>
             </label>
 
-            <a href="#login-box">
+            <!--<a href="#upload">-->
                 <button type="submit" class="btn btn-default btn-block btn-custom">Upload</button>
-            </a>
+            <!--</a>-->
         </form>
     </div>
 
-    <div class="login-box front">
+    <div id="upload" class="login-box back">
 
     </div>
 

@@ -11,31 +11,31 @@ public class Validator {
     public RedirectAttributes validateForm(UploadForm form, RedirectAttributes redirectAttributes) {
 
         if (form.getName().isEmpty()) {
-            redirectAttributes.addFlashAttribute("nameErrorMessage", "Please add name");
+            redirectAttributes.addFlashAttribute("nameErrorMessage", "Please add your name.");
         }
 
         if (form.getEmail().isEmpty()) {
-            redirectAttributes.addFlashAttribute("emailErrorMessage", "Please add Email address");
+            redirectAttributes.addFlashAttribute("emailErrorMessage", "Please add your Email address.");
         }
 
         if (form.getTitle().isEmpty()) {
-            redirectAttributes.addFlashAttribute("titleErrorMessage", "Please add title");
+            redirectAttributes.addFlashAttribute("titleErrorMessage", "Please add the videos title.");
         }
 
         if (form.getVideo().getSize() == 0) {
-            redirectAttributes.addFlashAttribute("videoErrorMessage", "Please select a file to upload");
+            redirectAttributes.addFlashAttribute("videoErrorMessage", "Please select a file to upload.");
         }
 
         if (form.getConference().isEmpty()) {
-            redirectAttributes.addFlashAttribute("conferenceErrorMessage", "Please select a conference");
+            redirectAttributes.addFlashAttribute("conferenceErrorMessage", "Please select a conference.");
         }
 
         if (form.getLanguage().isEmpty()) {
-            redirectAttributes.addFlashAttribute("languageErrorMessage", "Please select a language");
+            redirectAttributes.addFlashAttribute("languageErrorMessage", "Please select a language.");
         }
 
         if (!redirectAttributes.getFlashAttributes().isEmpty()) {
-            redirectAttributes.addFlashAttribute("errorMessage", "Please fill in all of the required fields");
+            redirectAttributes.addFlashAttribute("errorMessage", "Please fill in all mandatory fields.");
         }
 
         return redirectAttributes;

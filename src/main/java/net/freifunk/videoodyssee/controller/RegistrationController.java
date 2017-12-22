@@ -95,7 +95,7 @@ public class RegistrationController {
 
         model.put("message", "Upload successful");
 
-        return "success";
+        return "redirect:/#upload";
     }
 
     @GetMapping("/files/{filename:.+}")

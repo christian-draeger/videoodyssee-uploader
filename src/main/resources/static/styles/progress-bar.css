@@ -16,6 +16,12 @@ h2 {
     padding-left: 20px;
 }
 
+.notification-bar li i.success {
+    color: forestgreen;
+    background-color: lightgreen;
+    border-color: forestgreen;
+}
+
 /* circles */
 .notification-bar {
     color: darkgrey;
@@ -30,14 +36,13 @@ h2 {
 /* bar between circles */
 .notification-bar:after {
     content: '';
-    width: 1px;
-    border: 5px solid grey;
+    width: 10px;
     height: 100%;
-    background-color: grey;
     position: absolute;
     top: 3px;
     left: 15px;
     z-index: -1;
+    background: grey linear-gradient(to bottom, #02ff00, grey 20%);
 }
 
 /* step bar height */
@@ -53,7 +58,7 @@ h2 {
     position: relative;
     top: -19px;
     white-space: nowrap;
-    padding: 10px;
+    padding: 10px 20px 10px 10px;
     font-size: 15px;
     color: white;
     background-color: grey;
@@ -67,8 +72,8 @@ h2 {
     display: block;
     width: 0;
     height: 0;
-    border-top: 18px solid transparent;
-    border-bottom: 18px solid transparent;
+    border-top: 19px solid transparent;
+    border-bottom: 19px solid transparent;
     border-right: 25px solid grey;
     position: absolute;
     top: 0;

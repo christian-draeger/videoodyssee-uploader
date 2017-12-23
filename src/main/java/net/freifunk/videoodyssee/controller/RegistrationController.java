@@ -65,7 +65,7 @@ public class RegistrationController {
 
         validator.validateForm(form, redirectAttributes);
         if (validator.redirect(redirectAttributes)) {
-            new ModelAndView("redirect:/");
+            return new ModelAndView("redirect:/");
         }
 
         // TODO: validate if file is video file

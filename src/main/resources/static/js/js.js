@@ -14,6 +14,7 @@ $(document).ready(function () {
     $('.login-box.front button[type=submit]').click(function () {
         $('.login-box.front').addClass("animated bounceOutUp");
     });
+
 });
 
 function stepBarDemo() {
@@ -90,7 +91,7 @@ $.getScript("https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles
                 "shape": {
                     "type": "circle",
                     "stroke": {
-                        "width": 10,
+                        "width": 5,
                         "color": "#b71e4c"
                     },
                     "polygon": {

@@ -32,11 +32,11 @@ h2 {
     color: dodgerblue;
     background-color: lightblue;
     border-color: dodgerblue;
-    -webkit-animation: rotating 2s linear infinite;
-    -moz-animation: rotating 2s linear infinite;
-    -ms-animation: rotating 2s linear infinite;
-    -o-animation: rotating 2s linear infinite;
-    animation: rotating 2s linear infinite;
+    -webkit-animation: rotating 6s linear infinite;
+    -moz-animation: rotating 6s linear infinite;
+    -ms-animation: rotating 6s linear infinite;
+    -o-animation: rotating 6s linear infinite;
+    animation: rotating 6s linear infinite;
 }
 
 /* circles */
@@ -109,9 +109,9 @@ h2 {
     border: 3px solid grey;
     border-radius: 50%;
     background-color: #515151;
-    -webkit-box-shadow: 0 0 15px 5px #272727;
-    -moz-box-shadow: 0 0 15px 5px #272727;
-    box-shadow: 0 0 15px 5px #272727;
+    -webkit-box-shadow: 0 0 5px 5px #272727;
+    -moz-box-shadow: 0 0 5px 5px #272727;
+    box-shadow: 0 0 5px 5px #272727;
 }
 
 @-webkit-keyframes rotating /* Safari and Chrome */ {

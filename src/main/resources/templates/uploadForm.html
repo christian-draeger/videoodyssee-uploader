@@ -40,13 +40,13 @@
                 <span th:text="${errorMessage}">error message</span>
             </div>
         </div>
-        <div class="logo">
+        <div class="logo animated slow bounce">
             <a href="http://media.freifunk.net" target="_blank">
                 <img src="pics/logo-small.png" class="img img-responsive center-block pulse"/>
             </a>
             <h1 class="logo-caption">Video <span class="tweak">U</span>pload</h1>
         </div>
-        <form id="uploadForm" method="POST" action="/add" enctype="multipart/form-data">
+        <form id="uploadForm" class="animated slow bounce" method="POST" action="/add" enctype="multipart/form-data">
             <label class="tooltip-right" th:attr="data-tooltip=${titleErrorMessage != null ? 'Required field. ' + titleErrorMessage : ''}">
                 <input type="text" name="title" placeholder="Title of the video" th:attr="class=${titleErrorMessage != null ? 'invalid' : ''}"/>
                 <span class="input-label">Title</span>
@@ -118,12 +118,12 @@
         <div class="wrapper">
             <ul class="notification-bar">
                 <li>
-                    <i class="ion-checkmark-circled success"></i>
-                    <span>Fix Metadata</span>
+                    <i>1</i>
+                    <span>Fixing Metadata</span>
                 </li>
                 <li>
-                    <i class="ion-close-circled error"></i>
-                    <span>Encode Video</span>
+                    <i>2</i>
+                    <span>Encoding Video</span>
                 </li>
                 <li>
                     <i>3</i>
@@ -135,8 +135,9 @@
                 </li>
                 <li>
                     <i>5</i>
-                    <span>Publish Video</span>
+                    <span>Publishing Video</span>
                 </li>
+                <span class="line"></span>
             </ul>
         </div>
 
@@ -158,6 +159,5 @@
 <script type="application/javascript" src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
 <script type="application/javascript" src="js/js.js"></script>
 <script type="application/javascript" src="js/file-input.js"></script>
-<script type="application/javascript" src="js/progress-bar.js"></script>
 </body>
 </html>

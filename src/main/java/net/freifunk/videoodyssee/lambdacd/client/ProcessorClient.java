@@ -95,7 +95,10 @@ public class ProcessorClient {
 
     private String slugifyString(String string) {
         int counter = 1;
-        List<String> slugs = publicApiClient.getListOfallEvents().getListOfEvents().stream().map(Event::getSlug).collect(Collectors.toList());
+        List<String> slugs = publicApiClient.getListOfallEvents().getListOfEvents()
+                .stream()
+                .map(Event::getSlug)
+                .collect(Collectors.toList());
         StringBuilder slug = new StringBuilder(new Slugify().slugify(string));
         while (slugs.contains(slug.toString())) {
             slug.append("-").append(counter);

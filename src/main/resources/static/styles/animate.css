@@ -13,6 +13,10 @@
   animation-fill-mode: both;
 }
 
+.slow {
+  animation-duration: 2s !important;
+}
+
 .animated.infinite {
   animation-iteration-count: infinite;
 }

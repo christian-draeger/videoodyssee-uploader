@@ -25,13 +25,13 @@ function stepBarDemo() {
 
     setInterval(function () {
 
-        setRunning(circle, line, i);
+        setRunning(circle, i);
 
         if (i >= 1 && i < 4) {
             setSuccess(circle, line, stepTitle, i);
         }
         if (i === 4) {
-            setError(circle, line, stepTitle, i);
+            setError(circle, stepTitle, i);
         }
 
         i++;
@@ -45,7 +45,7 @@ function setRunning(circle, index) {
 function setSuccess(circle, line, title, index) {
     var i = index -1;
     circle.eq(i).removeClass().addClass("ion-checkmark-circled success");
-    line.css("background", "grey linear-gradient(to bottom, #02ff00 " + linePercent(i) + "%, grey " + (linePercent(i)+20) + "%)");
+    line.css("background", "grey linear-gradient(to bottom, forestgreen " + linePercent(i) + "%, grey " + (linePercent(i)+20) + "%)");
     title.eq(i).addClass("animated pulse");
 }
 
@@ -90,7 +90,7 @@ $.getScript("https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles
                 "shape": {
                     "type": "circle",
                     "stroke": {
-                        "width": 3,
+                        "width": 10,
                         "color": "#b71e4c"
                     },
                     "polygon": {
@@ -107,12 +107,12 @@ $.getScript("https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles
                     "anim": {
                         "enable": true,
                         "speed": 1,
-                        "opacity_min": 0.1,
+                        "opacity_min": 0.3,
                         "sync": false
                     }
                 },
                 "size": {
-                    "value": 5,
+                    "value": 2,
                     "random": true,
                     "anim": {
                         "enable": false,

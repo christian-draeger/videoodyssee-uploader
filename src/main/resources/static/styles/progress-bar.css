@@ -69,11 +69,11 @@ h2 {
 
 /* span with steps text */
 .notification-bar li span {
-    margin-left: 65px;
+    margin-left: 55px;
     vertical-align: top;
     line-height: 0;
     position: relative;
-    top: -19px;
+    top: -20px;
     white-space: nowrap;
     padding: 10px 20px 10px 10px;
     font-size: 15px;
@@ -109,6 +109,9 @@ h2 {
     border: 3px solid grey;
     border-radius: 50%;
     background-color: #515151;
+    -webkit-box-shadow: 0 0 15px 5px #272727;
+    -moz-box-shadow: 0 0 15px 5px #272727;
+    box-shadow: 0 0 15px 5px #272727;
 }
 
 @-webkit-keyframes rotating /* Safari and Chrome */ {

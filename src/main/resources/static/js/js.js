@@ -21,12 +21,13 @@ function stepBarDemo() {
 
     var i = 0;
     var circle = $('#upload i');
+
+    setRunning(circle, 0);
+
     var stepTitle = $('.notification-bar li');
     var line = $('.notification-bar .line');
 
     setInterval(function () {
-
-        setRunning(circle, i);
 
         if (i >= 1 && i < 4) {
             setSuccess(circle, line, stepTitle, i);
@@ -36,7 +37,7 @@ function stepBarDemo() {
         }
 
         i++;
-    }, 5000);
+    }, 1000);
 }
 
 function setRunning(circle, index) {
@@ -44,21 +45,26 @@ function setRunning(circle, index) {
 }
 
 function setSuccess(circle, line, title, index) {
-    var i = index -1;
+    var i = index - 1;
     circle.eq(i).removeClass().addClass("ion-checkmark-circled success");
-    line.css("background", "grey linear-gradient(to bottom, forestgreen " + linePercent(i) + "%, grey " + (linePercent(i)+20) + "%)");
+    line.css("background",
+        "grey linear-gradient(" +
+            "to bottom, " +
+            "forestgreen " + linePercent(i) + "%, " +
+            "grey " + (linePercent(i) + 20) + "%)");
     title.eq(i).addClass("animated pulse");
+    setRunning(circle, index);
 }
 
 function setError(circle, title, index) {
-    var i = index -1;
+    var i = index - 1;
     circle.eq(i).removeClass().addClass("ion-close-circled error");
     title.eq(i).addClass("animated pulse");
 }
 
 function linePercent(index) {
 
-    switch(index) {
+    switch (index) {
         case 0:
             return 0;
         case 1:

@@ -9,11 +9,11 @@ h2 {
 
 #upload:target.login-box.back {
     display: block;
-    padding-bottom: 50px;
 }
 
 #upload .wrapper {
     padding-left: 20px;
+    margin-bottom: 30px;
 }
 
 .notification-bar li i.success {

@@ -29,15 +29,15 @@ function stepBarDemo() {
 
     setInterval(function () {
 
-        if (i >= 1 && i < 4) {
+        if (i >= 1 && i <= 5) {
             setSuccess(circle, line, stepTitle, i);
         }
-        if (i === 4) {
+      /*  if (i === 4) {
             setError(circle, stepTitle, i);
-        }
+        }*/
 
         i++;
-    }, 1000);
+    }, 3000);
 }
 
 function setRunning(circle, index) {

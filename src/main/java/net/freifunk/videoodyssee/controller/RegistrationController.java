@@ -32,6 +32,7 @@ import net.freifunk.videoodyssee.voctoweb.client.PublicApiClient;
 @Controller
 public class RegistrationController {
 
+    private static final String SEPARATOR = ",";
     private final StorageService storageService;
 
     @Value("${upload.path}")
@@ -71,8 +72,8 @@ public class RegistrationController {
         // TODO: validate if file is video file
         final MultipartFile file = form.getVideo();
 
-        model.put("title", form.getTitle());
-        model.put("persons", form.getPersons());
+        model.put("title", form.getTitle().split(SEPARATOR));
+        model.put("persons", form.getPersons().split(SEPARATOR));
         model.put("tags", form.getTags());
         model.put("conference", form.getConference());
         model.put("language", form.getLanguage());

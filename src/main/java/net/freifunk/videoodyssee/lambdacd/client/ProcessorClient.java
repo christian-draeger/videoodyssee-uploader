@@ -27,6 +27,7 @@ import net.freifunk.videoodyssee.voctoweb.client.PublicApiClient;
 @Component
 public class ProcessorClient {
 
+    private static final String SEPARATOR = ",";
     @Value("${lambdacd.trigger.endpoint}")
     private String endpoint;
 
@@ -59,8 +60,8 @@ public class ProcessorClient {
             payload.put("language", form.getLanguage());
             payload.put("link", form.getLink());
             payload.put("description", form.getDescription());
-            payload.put("tags", new JSONArray().put(form.getTags()));
-            payload.put("persons", new JSONArray().put(form.getPersons()));
+            payload.put("tags", new JSONArray(form.getTags().split(SEPARATOR)));
+            payload.put("persons", new JSONArray(form.getPersons().split(SEPARATOR)));
             payload.put("slug", slugifyString(form.getTitle()));
         } catch (JSONException e) {
             log.warn("Error building JSON: ", e);
@@ -105,5 +106,14 @@ public class ProcessorClient {
             counter++;
         }
         return slug.toString();
+    }
+
+    public static void main(String[] args) {
+        try {
+            JSONArray jsonArray = new JSONArray("a,bsdajkfhak ,laksdjfal".split(SEPARATOR));
+            System.out.println(jsonArray.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

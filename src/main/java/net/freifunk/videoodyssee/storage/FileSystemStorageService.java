@@ -91,7 +91,7 @@ public class FileSystemStorageService implements StorageService {
             outputStream.close();
             inputStream.close();
             connection.disconnect();
-            return VideoFileInformation.builder().filename(filename).build();
+            return VideoFileInformation.builder().filename(saveFilePath).build();
         } else {
             log.warn("File not found or content type invalid. HTTP Status {}, content type {}", responseCode, connection.getContentType());
             connection.disconnect();

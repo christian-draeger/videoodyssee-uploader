@@ -17,6 +17,7 @@ public class UploadForm {
     private String language;
     private String releaseDate;
     private MultipartFile video;
+    private String videoUrl;
     private String name;
     private String email;
     private String link;

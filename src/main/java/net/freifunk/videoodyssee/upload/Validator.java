@@ -22,8 +22,8 @@ public class Validator {
             redirectAttributes.addFlashAttribute("titleErrorMessage", "Please add the videos title.");
         }
 
-        if (form.getVideo().getSize() == 0) {
-            redirectAttributes.addFlashAttribute("videoErrorMessage", "Please select a file to upload.");
+        if (form.getVideo().getSize() == 0 && (form.getVideoUrl() == null || form.getVideoUrl().trim().isEmpty())) {
+            redirectAttributes.addFlashAttribute("videoErrorMessage", "Please select a file to upload or give an URL to the file.");
         }
 
         if (form.getConference().isEmpty()) {

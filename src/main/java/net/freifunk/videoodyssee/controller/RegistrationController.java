@@ -1,9 +1,11 @@
 package net.freifunk.videoodyssee.controller;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import net.freifunk.videoodyssee.model.VideoFileInformation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -70,7 +72,19 @@ public class RegistrationController {
         }
 
         // TODO: validate if file is video file
-        final MultipartFile file = form.getVideo();
+        String videoFileName;
+        if (form.getVideoUrl() == null || form.getVideoUrl().trim().isEmpty()) {
+            final MultipartFile file = form.getVideo();
+            storageService.store(file);
+            videoFileName = file.getOriginalFilename();
+        } else {
+            try {
+                VideoFileInformation videoFileInformation = storageService.store(form.getVideoUrl());
+                videoFileName = videoFileInformation.getFilename();
+            } catch (IOException e) {
+                throw new DownloadFileException(form.getVideoUrl());
+            }
+        }
 
         model.put("title", form.getTitle().split(SEPARATOR));
         model.put("persons", form.getPersons().split(SEPARATOR));
@@ -78,13 +92,12 @@ public class RegistrationController {
         model.put("conference", form.getConference());
         model.put("language", form.getLanguage());
         model.put("releaseDate", form.getReleaseDate());
-        model.put("videoName", file.getOriginalFilename());
+        model.put("videoName", videoFileName);
         model.put("name", form.getName());
         model.put("email", form.getEmail());
         model.put("link", form.getLink());
         model.put("description", form.getDescription());
 
-        storageService.store(file);
         processorClient.trigger(form);
 
         model.put("buildNumber", 2); // TODO: use buildnumber that will be returned from processorClient

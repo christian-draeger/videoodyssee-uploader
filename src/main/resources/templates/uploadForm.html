@@ -90,6 +90,10 @@
                 </strong>
                 <span></span>
             </label>
+            <label>
+                <input type="url" name="videoUrl" placeholder="https://..." th:attr="class=${videoErrorMessage != null ? 'invalid' : ''}"/>
+                <span class="input-label">Video URL</span>
+            </label>
             <label class="tooltip-right" th:attr="data-tooltip=${nameErrorMessage != null ? 'Required field. ' + nameErrorMessage : ''}">
             <input type="text" name="name" placeholder="Your Name or Nickname" th:attr="class=${nameErrorMessage != null ? 'invalid' : ''}"/>
                 <span class="input-label">Name</span>

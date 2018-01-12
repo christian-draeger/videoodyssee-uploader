@@ -23,8 +23,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import static org.springframework.util.StreamUtils.BUFFER_SIZE;
 
-@Service
 @Slf4j
+@Service
 public class FileSystemStorageService implements StorageService {
 
     @Value("${spring.http.multipart.location}")
@@ -91,7 +91,7 @@ public class FileSystemStorageService implements StorageService {
             outputStream.close();
             inputStream.close();
             connection.disconnect();
-            return VideoFileInformation.builder().filename(saveFilePath).build();
+            return VideoFileInformation.builder().filename(filename).build();
         } else {
             log.warn("File not found or content type invalid. HTTP Status {}, content type {}", responseCode, connection.getContentType());
             connection.disconnect();

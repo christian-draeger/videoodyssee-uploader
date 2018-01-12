@@ -19,7 +19,6 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import lombok.extern.slf4j.Slf4j;
-import net.freifunk.videoodyssee.model.UploadForm;
 import net.freifunk.videoodyssee.voctoweb.client.Event;
 import net.freifunk.videoodyssee.voctoweb.client.PublicApiClient;
 
@@ -27,7 +26,6 @@ import net.freifunk.videoodyssee.voctoweb.client.PublicApiClient;
 @Component
 public class ProcessorClient {
 
-    private static final String SEPARATOR = ",";
     @Value("${lambdacd.trigger.endpoint}")
     private String endpoint;
 
@@ -43,26 +41,26 @@ public class ProcessorClient {
     @Autowired
     private PublicApiClient publicApiClient;
 
-    public void trigger(UploadForm form) {
+    public void trigger(LambdacdData data) {
 
         log.info("trigger lambdacd method called");
 
         JSONObject payload = new JSONObject();
         try {
-            payload.put("name", form.getName());
-            payload.put("email", form.getEmail());
-            payload.put("title", form.getTitle());
-            payload.put("subtitle", form.getSubTitle());
+            payload.put("name", data.getName());
+            payload.put("email", data.getEmail());
+            payload.put("title", data.getTitle());
+            payload.put("subtitle", data.getSubtitle());
             payload.put("date", getCurrentDate());
-            payload.put("releaseDate", form.getReleaseDate());
-            payload.put("videoFilePath", tempUploadDir + form.getVideo().getOriginalFilename());
-            payload.put("conferenceAcronym", form.getConference());
-            payload.put("language", form.getLanguage());
-            payload.put("link", form.getLink());
-            payload.put("description", form.getDescription());
-            payload.put("tags", new JSONArray(form.getTags().split(SEPARATOR)));
-            payload.put("persons", new JSONArray(form.getPersons().split(SEPARATOR)));
-            payload.put("slug", slugifyString(form.getTitle()));
+            payload.put("releaseDate", data.getReleaseDate());
+            payload.put("videoFilePath", tempUploadDir + data.getVideoFileName());
+            payload.put("conferenceAcronym", data.getConferenceAcronym());
+            payload.put("language", data.getLanguage());
+            payload.put("link", data.getLink());
+            payload.put("description", data.getDescription());
+            payload.put("tags", data.getTags());
+            payload.put("persons", data.getPersons());
+            payload.put("slug", slugifyString(data.getTitle()));
         } catch (JSONException e) {
             log.warn("Error building JSON: ", e);
         }
@@ -108,12 +106,4 @@ public class ProcessorClient {
         return slug.toString();
     }
 
-    public static void main(String[] args) {
-        try {
-            JSONArray jsonArray = new JSONArray("a,bsdajkfhak ,laksdjfal".split(SEPARATOR));
-            System.out.println(jsonArray.toString());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
 }

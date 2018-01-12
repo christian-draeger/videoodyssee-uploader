@@ -5,7 +5,10 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import net.freifunk.videoodyssee.lambdacd.client.LambdacdData;
 import net.freifunk.videoodyssee.model.VideoFileInformation;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -86,9 +89,9 @@ public class RegistrationController {
             }
         }
 
-        model.put("title", form.getTitle().split(SEPARATOR));
+        model.put("title", form.getTitle());
         model.put("persons", form.getPersons().split(SEPARATOR));
-        model.put("tags", form.getTags());
+        model.put("tags", form.getTags().split(SEPARATOR));
         model.put("conference", form.getConference());
         model.put("language", form.getLanguage());
         model.put("releaseDate", form.getReleaseDate());
@@ -98,7 +101,26 @@ public class RegistrationController {
         model.put("link", form.getLink());
         model.put("description", form.getDescription());
 
-        processorClient.trigger(form);
+        LambdacdData lambdacdData = null;
+        try {
+            lambdacdData = LambdacdData.builder()
+                    .title(form.getTitle())
+                    .persons(new JSONArray(form.getPersons().split(SEPARATOR)))
+                    .tags(new JSONArray(form.getTags().split(SEPARATOR)))
+                    .conferenceAcronym(form.getConference())
+                    .videoFileName(videoFileName)
+                    .language(form.getLanguage())
+                    .releaseDate(form.getReleaseDate())
+                    .name(form.getName())
+                    .email(form.getEmail())
+                    .link(form.getLink())
+                    .description(form.getDescription())
+                    .build();
+        } catch (JSONException e) {
+            log.warn("Error building JSON: ", e);
+        }
+
+        processorClient.trigger(lambdacdData);
 
         model.put("buildNumber", 2); // TODO: use buildnumber that will be returned from processorClient
 

@@ -15,10 +15,6 @@
     backface-visibility: hidden;
 }
 
-.login-box.front {
-    display: none;
-}
-
 .login-box .logo .logo-caption {
     font-family: 'Poiret One', cursive;
     color: white;

@@ -1,35 +1,76 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Freifunk - Videoodyssee</title>
-    <link rel="icon" type="image/x-icon" href="../static/favicon.ico" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Upload success Freifunk - Videoodyssee</title>
+    <link rel="icon" type="image/x-icon" href="../static/favicon.ico"/>
+    <link rel="icon" sizes="192x192" href="../static/pics/logo.png"/>
+    <meta name="theme-color" content="#302e2d"/>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
-            href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"/>
+          href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{styles/background.css}"
+          href="styles/background.css"/>
+    <link rel="stylesheet" th:href="@{styles/animate.css}"
+          href="styles/animate.css"/>
+    <link rel="stylesheet" th:href="@{styles/form.css}"
+          href="styles/form.css"/>
+    <link rel="stylesheet" th:href="@{styles/flip-box.css}"
+          href="styles/flip-box.css"/>
     <link rel="stylesheet" th:href="@{styles/css.css}"
-            href="styles/css.css"/>
+          href="styles/css.css"/>
+    <link rel="stylesheet" th:href="@{styles/tooltip.css}"
+          href="styles/tooltip.css"/>
+    <link rel="stylesheet" th:href="@{styles/progress-bar.css}"
+          href="styles/progress-bar.css"/>
+    <link rel="stylesheet" th:href="@{styles/ionicons.css}"
+          href="styles/ionicons.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
+
+
+    <script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);</script>
 </head>
 <body>
 
-<div class="alert alert-success">
-    <h1>Success</h1>
-    <h2>Your video will be processed now</h2>
-</div>
+<div class="container">
+    <div id="upload" class="login-box back animated bounceInDown">
+        <h2>Upload Status</h2>
 
-<div>
-    <p>Title : <b th:text="${title}"/></p>
-    <p>Persons: <b th:text="${persons}"/></p>
-    <p>Tags: <b th:text="${tags}"/></p>
-    <p>Conference  : <b th:text="${conference}"/></p>
-    <p>Language: <b th:text="${language}"/></p>
-    <p>Date  : <b th:text="${releaseDate}"/></p>
-    <p>Video: <b th:text="${videoName}"/></p>
-    <p>Name  : <b th:text="${name}"/></p>
-    <p>Email : <b th:text="${email}"/></p>
-    <p>Link : <b th:text="${link}"/></p>
-    <p>Description : <b th:text="${description}"/></p>
-</div>
+        <div class="wrapper">
+            <ul class="notification-bar">
+                <li>
+                    <i>1</i>
+                    <span>Fixing Metadata</span>
+                </li>
+                <li>
+                    <i>2</i>
+                    <span>Encoding Video</span>
+                </li>
+                <li>
+                    <i>3</i>
+                    <span>Waiting for confirmation</span>
+                </li>
+                <li>
+                    <i>4</i>
+                    <span>Upload to CDN &amp; YouTube</span>
+                </li>
+                <li>
+                    <i>5</i>
+                    <span>Publishing Video</span>
+                </li>
+                <span class="line"></span>
+            </ul>
+        </div>
 
+    </div>
+</div>
+<div class="footer"><img src="pics/footer-transparent.png"/></div>
+<!--<div class="footer"></div>-->
+<div id="particles-js"></div>
 <script type="application/javascript" src="/webjars/jquery/3.1.1/jquery.min.js"></script>
 <script type="application/javascript" src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+<script type="application/javascript" src="js/js.js"></script>
+<script type="application/javascript" src="js/stepbar.js"></script>
+<script type="application/javascript" src="js/file-input.js"></script>
 </body>
 </html>

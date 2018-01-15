@@ -126,7 +126,7 @@ public class RegistrationController {
 
         waitForAnimation(1000);
 
-        return new ModelAndView("redirect:/#upload", "formData", model);
+        return new ModelAndView("success", "formData", model);
     }
 
     @ExceptionHandler(StorageFileNotFoundException.class)

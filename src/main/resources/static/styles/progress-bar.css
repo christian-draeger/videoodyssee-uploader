@@ -3,10 +3,6 @@ h2 {
     color: white;
 }
 
-.login-box.back {
-    display: none;
-}
-
 #upload:target.login-box.back {
     display: block;
 }

@@ -94,8 +94,8 @@
                 </strong>
                 <span></span>
             </label>
-            <label>
-                <input type="url" name="videoUrl" placeholder="https://..." th:attr="class=${videoErrorMessage != null ? 'invalid' : ''}"/>
+            <label class="tooltip-right" th:attr="data-tooltip=${nameErrorMessage != null ? 'Required field. ' + videoUrlErrorMessage : ''}">
+                <input type="text" name="videoUrl" placeholder="https://..." th:attr="class=${videoUrlErrorMessage != null ? 'invalid' : ''}"/>
                 <span class="input-label">Video URL</span>
             </label>
             <label class="tooltip-right" th:attr="data-tooltip=${nameErrorMessage != null ? 'Required field. ' + nameErrorMessage : ''}">
@@ -103,11 +103,11 @@
                 <span class="input-label">Name</span>
             </label>
             <label class="tooltip-right" th:attr="data-tooltip=${emailErrorMessage != null ? 'Required field. ' + emailErrorMessage : ''}">
-            <input type="email" name="email" placeholder="Your E-Mail address" th:attr="class=${emailErrorMessage != null ? 'invalid' : ''}"/>
+            <input type="text" name="email" placeholder="Your E-Mail address" th:attr="class=${emailErrorMessage != null ? 'invalid' : ''}"/>
                 <span class="input-label">E-Mail</span>
             </label>
-            <label>
-                <input type="text" name="link" placeholder="(optional)"/>
+            <label th:attr="data-tooltip=${nameErrorMessage != null ? 'Required field. ' + linkUrlErrorMessage : ''}">
+                <input type="text" name="link" placeholder="(optional)" th:attr="class=${linkUrlErrorMessage != null ? 'invalid' : ''}"/>
                 <span class="input-label">Link</span>
             </label>
             <label>
@@ -120,45 +120,6 @@
             <!--</a>-->
         </form>
     </div>
-
-    <div id="upload" class="login-box back animated bounceInDown">
-        <h2>Upload Status</h2>
-
-        <div class="wrapper">
-            <ul class="notification-bar">
-                <li>
-                    <i>1</i>
-                    <span>Fixing Metadata</span>
-                </li>
-                <li>
-                    <i>2</i>
-                    <span>Encoding Video</span>
-                </li>
-                <li>
-                    <i>3</i>
-                    <span>Waiting for confirmation</span>
-                </li>
-                <li>
-                    <i>4</i>
-                    <span>Upload to CDN &amp; YouTube</span>
-                </li>
-                <li>
-                    <i>5</i>
-                    <span>Publishing Video</span>
-                </li>
-                <span class="line"></span>
-            </ul>
-        </div>
-
-    </div>
-
-    <!--<label id="flip">-->
-        <!--<input type="checkbox"  />-->
-        <!--<div class="card">-->
-            <!--<div class="front">Front</div>-->
-            <!--<div class="back">Back</div>-->
-        <!--</div>-->
-    <!--</label>-->
 
 </div>
 <div class="footer"><img src="pics/footer-transparent.png"/></div>

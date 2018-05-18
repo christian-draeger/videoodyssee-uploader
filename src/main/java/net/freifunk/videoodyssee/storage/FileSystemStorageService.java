@@ -1,5 +1,7 @@
 package net.freifunk.videoodyssee.storage;
 
+import static org.springframework.util.StreamUtils.BUFFER_SIZE;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,8 +13,6 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.stream.Stream;
 
-import lombok.extern.slf4j.Slf4j;
-import net.freifunk.videoodyssee.model.VideoFileInformation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -21,13 +21,14 @@ import org.springframework.util.FileSystemUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import static org.springframework.util.StreamUtils.BUFFER_SIZE;
+import lombok.extern.slf4j.Slf4j;
+import net.freifunk.videoodyssee.model.VideoFileInformation;
 
 @Slf4j
 @Service
 public class FileSystemStorageService implements StorageService {
 
-    @Value("${spring.http.multipart.location}")
+    @Value("${spring.servlet.multipart.location}")
     private Path tempUploadDir;
 
     @Override

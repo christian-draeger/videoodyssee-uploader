@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +34,7 @@ public class ProcessorClient {
     @Value("${lambdacd.trigger.pass}")
     private String pass;
 
-    @Value("${spring.http.multipart.location}")
+    @Value("${spring.servlet.multipart.location}")
     private String tempUploadDir;
 
     @Autowired

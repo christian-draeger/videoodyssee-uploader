@@ -1,13 +1,11 @@
 package net.freifunk.videoodyssee.voctoweb.client;
 
-import java.io.Serializable;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
 import javax.validation.Valid;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import lombok.Data;
+import java.io.Serializable;
+import java.util.List;
 
 @Data
 public class Conferences implements Serializable {

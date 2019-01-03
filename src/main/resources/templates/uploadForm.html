@@ -7,8 +7,8 @@
     <link rel="icon" type="image/x-icon" href="../static/favicon.ico"/>
     <link rel="icon" sizes="192x192" href="../static/pics/logo.png"/>
     <meta name="theme-color" content="#302e2d"/>
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"
-          href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}"
+          href="/webjars/bootstrap/4.2.1/css/bootstrap.min.css"/>
     <link rel="stylesheet" th:href="@{styles/background.css}"
             href="styles/background.css"/>
     <link rel="stylesheet" th:href="@{styles/animate.css}"
@@ -47,6 +47,21 @@
             </a>
             <h1 class="logo-caption">Video <span class="tweak">U</span>pload</h1>
         </div>
+        <div>
+            <label class="tooltip-right">
+                <input id="scheduleUrl" type="text" name="schedule" placeholder="Schedule file to use"/>
+                <span class="input-label">Schedule URL</span>
+            </label>
+            <button id="getScheduleButton" type="button" class="btn btn-default btn-block btn-custom">Load Schedule</button>
+        </div>
+        <div>
+            <label class="tooltip-right">
+                <select id="events" disabled>
+
+                </select>
+            </label>
+        </div>
+
         <form id="uploadForm" class="animated slow bounce" method="POST" action="/add" enctype="multipart/form-data">
             <label class="tooltip-right" th:attr="data-tooltip=${titleErrorMessage != null ? 'Required field. ' + titleErrorMessage : ''}">
                 <input type="text" name="title" placeholder="Title of the video" th:attr="class=${titleErrorMessage != null ? 'invalid' : ''}"/>
@@ -114,6 +129,7 @@
                 <textarea name="description" placeholder="(optional)"></textarea>
                 <span class="input-label">Description</span>
             </label>
+            <input type="hidden" name="uuid"/>
 
             <!--<a href="#upload">-->
                 <button type="submit" class="btn btn-default btn-block btn-custom">Upload</button>
@@ -126,8 +142,9 @@
 <!--<div class="footer"></div>-->
 <div id="particles-js"></div>
 <script type="application/javascript" src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
-<script type="application/javascript" src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script type="application/javascript" src="/webjars/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 <script type="application/javascript" src="js/js.js"></script>
 <script type="application/javascript" src="js/file-input.js"></script>
+<script type="application/javascript" src="js/get-schedule.js"></script>
 </body>
 </html>

@@ -9,8 +9,11 @@ import net.freifunk.videoodyssee.storage.StorageFileNotFoundException;
 import net.freifunk.videoodyssee.upload.Validator;
 import net.freifunk.videoodyssee.voctoweb.client.Conferences;
 import net.freifunk.videoodyssee.voctoweb.client.PublicApiClient;
+import org.json.JSONObject;
+import org.json.XML;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +22,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -53,6 +62,22 @@ public class RegistrationController {
         Map<String, String> languages = Arrays.stream(Languages.values()).collect(Collectors.toMap(Languages::getAbbrevation, Languages::getValue));
         model.addAttribute("languages", languages);
         return "uploadForm";
+    }
+
+    @GetMapping(value = "/getData", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String getDataFromRemoteServer(@RequestParam String url) throws IOException {
+        URL dataUrl = new URL(url);
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(dataUrl.openStream()));
+
+        String inputLine;
+        StringBuilder xml = new StringBuilder();
+        while ((inputLine = in.readLine()) != null)
+            xml.append(inputLine);
+        in.close();
+        JSONObject jsonObject = XML.toJSONObject(xml.toString());
+        return jsonObject.toString(4);
     }
 
     @PostMapping("/add")

@@ -1,10 +1,6 @@
 package net.freifunk.videoodyssee;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.then;
-import static org.mockito.Matchers.any;
-
+import net.freifunk.videoodyssee.storage.FileSystemStorageService;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +18,10 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.multipart.MultipartFile;
 
-import net.freifunk.videoodyssee.storage.StorageService;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
+import static org.mockito.Matchers.any;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -32,7 +31,7 @@ public class FileUploadIntegrationTests {
 	private TestRestTemplate restTemplate;
 
 	@MockBean
-	private StorageService storageService;
+	private FileSystemStorageService storageService;
 
 	@LocalServerPort
 	private int port;

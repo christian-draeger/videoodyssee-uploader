@@ -1,15 +1,15 @@
 package net.freifunk.videoodyssee.voctoweb.client;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+
+import javax.validation.Valid;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.validation.Valid;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import lombok.Data;
-
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Event implements Serializable {
 
     @JsonProperty("guid")

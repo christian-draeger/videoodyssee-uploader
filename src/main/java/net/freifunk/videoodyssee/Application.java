@@ -1,11 +1,10 @@
 package net.freifunk.videoodyssee;
 
+import net.freifunk.videoodyssee.storage.FileSystemStorageService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import net.freifunk.videoodyssee.storage.StorageService;
 
 @SpringBootApplication
 public class Application {
@@ -15,7 +14,7 @@ public class Application {
     }
 
     @Bean
-    CommandLineRunner init(StorageService storageService) {
+    CommandLineRunner init(FileSystemStorageService storageService) {
         return args -> {
             storageService.deleteAll();
             storageService.init();

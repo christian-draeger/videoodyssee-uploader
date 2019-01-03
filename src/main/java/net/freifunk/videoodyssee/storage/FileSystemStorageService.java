@@ -1,6 +1,17 @@
 package net.freifunk.videoodyssee.storage;
 
-import static org.springframework.util.StreamUtils.BUFFER_SIZE;
+import lombok.extern.slf4j.Slf4j;
+import net.freifunk.videoodyssee.controller.DownloadFileException;
+import net.freifunk.videoodyssee.model.UploadForm;
+import net.freifunk.videoodyssee.model.VideoFileInformation;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.stereotype.Service;
+import org.springframework.util.FileSystemUtils;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,25 +24,33 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.stream.Stream;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
-import org.springframework.stereotype.Service;
-import org.springframework.util.FileSystemUtils;
-import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
-
-import lombok.extern.slf4j.Slf4j;
-import net.freifunk.videoodyssee.model.VideoFileInformation;
+import static org.springframework.util.StreamUtils.BUFFER_SIZE;
 
 @Slf4j
 @Service
-public class FileSystemStorageService implements StorageService {
+public class FileSystemStorageService {
 
     @Value("${spring.servlet.multipart.location}")
     private Path tempUploadDir;
 
-    @Override
+    public String storeFileAndGetFilename(@ModelAttribute UploadForm form) {
+        // TODO: validate if file is video file
+        String videoFileName;
+        if (form.getVideoUrl() == null || form.getVideoUrl().trim().isEmpty()) {
+            final MultipartFile file = form.getVideo();
+            store(file);
+            videoFileName = file.getOriginalFilename();
+        } else {
+            try {
+                VideoFileInformation videoFileInformation = store(form.getVideoUrl());
+                videoFileName = videoFileInformation.getFilename();
+            } catch (IOException e) {
+                throw new DownloadFileException(form.getVideoUrl());
+            }
+        }
+        return videoFileName;
+    }
+
     public void store(MultipartFile file) {
         String filename = StringUtils.cleanPath(file.getOriginalFilename());
         try {
@@ -52,8 +71,7 @@ public class FileSystemStorageService implements StorageService {
         }
     }
 
-    @Override
-    public VideoFileInformation store(String urlString) throws IOException {
+    VideoFileInformation store(String urlString) throws IOException {
         URL url = new URL(urlString);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         int responseCode = connection.getResponseCode();
@@ -100,7 +118,6 @@ public class FileSystemStorageService implements StorageService {
         }
     }
 
-    @Override
     public Stream<Path> loadAll() {
         try {
             return Files.walk(this.tempUploadDir, 1)
@@ -113,12 +130,10 @@ public class FileSystemStorageService implements StorageService {
 
     }
 
-    @Override
-    public Path load(String filename) {
+    Path load(String filename) {
         return tempUploadDir.resolve(filename);
     }
 
-    @Override
     public Resource loadAsResource(String filename) {
         try {
             Path file = load(filename);
@@ -137,12 +152,10 @@ public class FileSystemStorageService implements StorageService {
         }
     }
 
-    @Override
     public void deleteAll() {
         FileSystemUtils.deleteRecursively(tempUploadDir.toFile());
     }
 
-    @Override
     public void init() {
         try {
             Files.createDirectories(tempUploadDir);

@@ -1,29 +1,34 @@
 package net.freifunk.videoodyssee.lambdacd.client;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.slugify.Slugify;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-
 import lombok.extern.slf4j.Slf4j;
+import net.freifunk.videoodyssee.model.UploadForm;
 import net.freifunk.videoodyssee.voctoweb.client.Event;
 import net.freifunk.videoodyssee.voctoweb.client.PublicApiClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Component
 public class ProcessorClient {
+
+    private static final String SEPARATOR = ",";
+
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     @Value("${lambdacd.trigger.endpoint}")
     private String endpoint;
@@ -40,31 +45,20 @@ public class ProcessorClient {
     @Autowired
     private PublicApiClient publicApiClient;
 
-    public void trigger(LambdacdData data) {
+    public void trigger(UploadForm form, String videoFileName) {
+
+        LambdacdData data = buildLambdacdData(form, videoFileName);
 
         log.info("trigger lambdacd method called");
 
-        JSONObject payload = new JSONObject();
+        String payload = null;
         try {
-            payload.put("name", data.getName());
-            payload.put("email", data.getEmail());
-            payload.put("title", data.getTitle());
-            payload.put("subtitle", data.getSubtitle());
-            payload.put("date", getCurrentDate());
-            payload.put("releaseDate", data.getReleaseDate());
-            payload.put("videoFilePath", tempUploadDir + data.getVideoFileName());
-            payload.put("conferenceAcronym", data.getConferenceAcronym());
-            payload.put("language", data.getLanguage());
-            payload.put("link", data.getLink());
-            payload.put("description", data.getDescription());
-            payload.put("tags", data.getTags());
-            payload.put("persons", data.getPersons());
-            payload.put("slug", slugifyString(data.getTitle()));
-        } catch (JSONException e) {
-            log.warn("Error building JSON: ", e);
+            payload = OBJECT_MAPPER.writeValueAsString(data);
+        } catch (JsonProcessingException e) {
+            log.error("error converting data to json", e);
         }
 
-        log.info(payload.toString());
+        log.info(payload);
         log.info(endpoint);
         log.info("auth: {} {}", user, pass);
 
@@ -83,6 +77,25 @@ public class ProcessorClient {
         if (response != null) {
             log.info("lambdaCD responds with status {} - {} - {}", response.getStatus(), response.getStatusText(), response.getBody());
         }
+    }
+
+    public LambdacdData buildLambdacdData(@ModelAttribute UploadForm form, String videoFileName) {
+        return LambdacdData.builder()
+                .uuid(form.getUuid())
+                .title(form.getTitle())
+                .persons(Arrays.asList(form.getPersons().split(SEPARATOR)))
+                .tags(Arrays.asList(form.getTags().split(SEPARATOR)))
+                .conferenceAcronym(form.getConference())
+                .videoFilePath(tempUploadDir + videoFileName)
+                .language(form.getLanguage())
+                .releaseDate(form.getReleaseDate())
+                .name(form.getName())
+                .email(form.getEmail())
+                .link(form.getLink())
+                .description(form.getDescription())
+                .slug(slugifyString(form.getTitle()))
+                .date(getCurrentDate())
+                .build();
     }
 
     private String getCurrentDate() {

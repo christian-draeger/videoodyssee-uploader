@@ -1,16 +1,7 @@
 package net.freifunk.videoodyssee;
 
-import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.then;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.fileUpload;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.nio.file.Paths;
-import java.util.stream.Stream;
-
+import net.freifunk.videoodyssee.storage.FileSystemStorageService;
+import net.freifunk.videoodyssee.storage.StorageFileNotFoundException;
 import org.hamcrest.Matchers;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -23,8 +14,16 @@ import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import net.freifunk.videoodyssee.storage.StorageFileNotFoundException;
-import net.freifunk.videoodyssee.storage.StorageService;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
+
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.fileUpload;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
@@ -35,7 +34,7 @@ public class FileUploadTests {
     private MockMvc mvc;
 
     @MockBean
-    private StorageService storageService;
+    private FileSystemStorageService storageService;
 
     @Test
     @Ignore

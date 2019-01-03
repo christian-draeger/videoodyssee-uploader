@@ -1,9 +1,8 @@
 package net.freifunk.videoodyssee.model;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -22,5 +21,5 @@ public class UploadForm {
     private String email;
     private String link;
     private String description;
-
+    private String uuid;
 }

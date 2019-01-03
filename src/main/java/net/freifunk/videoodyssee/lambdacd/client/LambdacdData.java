@@ -1,12 +1,16 @@
 package net.freifunk.videoodyssee.lambdacd.client;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
 
+import static com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 @Builder
 @Data
+@JsonInclude(Include.NON_NULL)
 public class LambdacdData {
     String uuid;
     String name;

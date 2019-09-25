@@ -10,7 +10,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.1.RELEASE</version>
+        <version>2.1.8.RELEASE</version>
     </parent>
 
     <properties>
@@ -65,7 +65,7 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
-            <version>4.2.1</version>
+            <version>4.3.1</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
@@ -85,7 +85,6 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.10.0.pr3</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>

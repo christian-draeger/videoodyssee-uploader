@@ -10,4 +10,4 @@ fi
 USER=$1
 
 mvn -f ../pom.xml clean install
-ansible-playbook -i inventories --ask-sudo-pass --user $USER playbook.yml
+ansible-playbook -i inventories --ask-become-pass --user $USER playbook.yml

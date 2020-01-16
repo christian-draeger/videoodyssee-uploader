@@ -20,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -81,7 +82,7 @@ public class ProcessorClient {
 
     public LambdacdData buildLambdacdData(@ModelAttribute UploadForm form, String videoFileName) {
         return LambdacdData.builder()
-                .uuid(form.getUuid())
+                .uuid(getOrCreateUuid(form.getUuid()))
                 .title(form.getTitle())
                 .persons(Arrays.asList(form.getPersons().split(SEPARATOR)))
                 .tags(Arrays.asList(form.getTags().split(SEPARATOR)))
@@ -96,6 +97,14 @@ public class ProcessorClient {
                 .slug(slugifyString(form.getTitle()))
                 .date(getCurrentDate())
                 .build();
+    }
+
+    private String getOrCreateUuid(String uuid) {
+        String formUuid = uuid;
+        if (formUuid == null || formUuid.isEmpty()) {
+            formUuid = UUID.randomUUID().toString();
+        }
+        return formUuid;
     }
 
     private String getCurrentDate() {
